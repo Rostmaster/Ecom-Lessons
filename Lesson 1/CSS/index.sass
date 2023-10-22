@@ -1,0 +1,81 @@
+@use 'sass:list'
+$primary-color: antiquewhite
+$accent-color: lightcoral
+$font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+
+body
+    background-color: $primary-color
+
+ul
+    list-style-type: none
+    margin: 0
+    padding: 0
+    overflow: hidden
+    background-color: #333333
+
+li
+    float: left
+
+    .logo
+        display: block
+        color: $accent-color
+        text-align: center
+        padding: 16px
+        text-decoration: overline
+        font-family: $font
+
+    .footer-item
+        display: block
+        color: rgb(209, 190, 190)
+        text-align: center
+        padding: 16px
+        text-decoration: none
+        
+    .footer-item-space
+        display: block
+        text-align: center
+        width: 10%
+        padding: 16px
+        text-decoration: none
+
+    > a
+        display: block
+        color: white
+        text-align: center
+        padding: 16px
+        text-decoration: none
+        font-family: $font
+        &:hover
+            background-color: #282727
+
+div
+    .header-row
+        background-color: $primary-color
+        position: -webkit-sticky
+        position: sticky
+        top: 0px
+        padding-top: 2%
+        font-size: 25px
+    .footer
+        text-align: center
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: 0
+        background-color: #585656
+    .container
+        margin: 0
+        padding: 0%
+
+p
+    padding: 5% 5% 0% 5%
+
+    // &::first-line 
+    //     font-weight: bold
+    &::nth-word(2)
+        font-size: 20px
+
+img
+    width: 300px
+    height: 200px
+    border-radius: 20px
