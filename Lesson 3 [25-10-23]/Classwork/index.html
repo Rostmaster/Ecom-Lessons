@@ -8,17 +8,50 @@
   </head>
   <body>
     <div class="content">
+
       <h1>My Full name</h1>
+
       <a href="https://www.hackthebox.com/">Click me... I am the box</a>
-      <br /><br />
-      <br />
+
+      <br /><br /><br />
+      
       <img src="https://source.unsplash.com/random/300×200" alt="Unsplash img" />
+
+      <form action=""class="form" >
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Your name" required autofocus>
+
+        <label for="Birth_date">B-date:</label>
+        <input type="date" name="b_date" id="b_date">
+
+        <label for="Age">Age:</label>
+        <input type="number" name="age" id="age" placeholder="Your age">
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" placeholder="Your password" required pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$/g">
+
+        <input type="color" placeholder="#240115">
+        <select name="color_relation" id="col_rel">
+          <option value="Favorite">Favorite color</option>
+          <option value="Hated">Hated color</option>
+          <option value="Neutral">Neutral color</option>
+        </select>
+        
+
+
+
+        <br>
+        <input type="submit" value="submit" id="submit">
+      </form>
+
       <ul>
         <li>Red hat</li>
         <li>IBM</li>
         <li>Flipper Zero</li>
         <li>Fortinet</li>
       </ul>
+
       <table class="content-table">
         <thead>
           <tr>
@@ -49,6 +82,7 @@
           </tr>
         </tbody>
       </table>
+
     </div>
   </body>
 </html>
