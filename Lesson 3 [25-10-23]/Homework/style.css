@@ -1,0 +1,131 @@
+/* 
+color palette used:
+https://coolors.co/56e39f-59c9a5-5b6c5d-3b2c35-2a1f2d
+*/
+
+:root {
+    --dark: #2A1F2D;
+    --light: #3B2C35;
+    --accent: #59C9A5;
+    --accent-light: #56E39F
+}
+
+* {
+    color: var(--accent);
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.heading {
+    color: var(--accent);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--dark);
+    text-align: center;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background-color: var(--light);
+}
+
+.wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    margin: 0 auto;
+    width: 400px;
+    padding: 40px;
+    border: 1px solid;
+    border-radius: 14px;
+}
+
+form .fields {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+form .fields label {
+    margin: 10px 0 0 0;
+}
+
+form .fields input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+form .fields input {
+    width: 300px;
+    padding: 10px;
+    font-size: medium;
+    background-color: var(--light);
+    border: 0;
+    border-bottom: 1px solid var(--accent);
+}
+
+form .fields select {
+    width: 200px;
+    margin: 10px 0;
+    font-size: medium;
+    background-color: var(--light);
+    border: 0;
+    border-bottom: 1px solid var(--accent);
+}
+
+form .fields textarea {
+    width: 400px;
+    margin: 10px 0;
+    background-color: var(--light);
+    border: 0;
+    border-bottom: 1px solid var(--accent);
+}
+
+input[type="checkbox"] {
+    filter: sepia(100%) brightness(80%) hue-rotate(170deg) saturate(70%) contrast(300%);
+}
+
+input[type=submit] {
+    background-color: var(--accent);
+    border: none;
+    border-radius: 5px;
+    color: var(--dark);
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.agreement {
+    padding: 20px 0;
+}
+
+
+
+#notify {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 12px;
+    width: 100%;
+    color: #fff;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#notify.error {
+    background-color: #DD2C00;
+}
+
+input.invalid {
+    border-color: #DD2C00;
+}

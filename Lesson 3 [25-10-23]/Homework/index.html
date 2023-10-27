@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HW 27-10-23</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- <script src="script.js"></script>  -->
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <h1 class="heading">Create an account</h1>
+        <form action="" id="form"class="registration">
+          <div id="fields" class="fields">
+            <label for="name"> USERNAME:</label>
+            <input
+              id="i_name"
+              type="text"
+              placeholder="Enter your name"
+              pattern="[A-Z]{2,15}"
+              title="Username should only contain uppercase letters. e.g. JOHN"
+            />
+
+            <label for="password"> PASSWORD:</label>
+            <input id="i_pass" type="password" />
+
+            <label for="password_confirmation">Confirm password:</label>
+            <input id="i_pass_conf" type="password" />
+
+            <label for="age">AGE:</label>
+            <select name="age" id="s_age">
+              <option value="Under_18">Under 18</option>
+              <option value="18-35">18-35</option>
+              <option value="35-46">35-46</option>
+              <option value="46+">46+</option>
+            </select>
+
+            <label for="about">WHO ARE YOU:</label>
+            <textarea
+              name="t_about"
+              placeholder="Tell about yourself"
+              id="t_about"
+              cols="30"
+              rows="10"
+            ></textarea>
+          </div>
+
+          <div class="agreement">
+            <input type="checkbox" id="agree" />
+            <label for="agree" id="agree">I agree to the</label>
+            <a
+              href="https://termify.io/terms-of-service-generator?gad_source=1&gclid=CjwKCAjwv-2pBhB-EiwAtsQZFMG0CMxFeJJom3X8Ioz_2WUnITYYpJnQ6iTMh5pmvcFVgY12wr5t1RoCOu0QAvD_BwE"
+              id="terms"
+              >terms of service</a
+            ><br />
+          </div>
+
+          <input type="submit" value="Sign up" id="submit" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
