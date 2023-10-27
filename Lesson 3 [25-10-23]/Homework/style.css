@@ -1,131 +1,181 @@
 /* 
+
 color palette used:
-https://coolors.co/56e39f-59c9a5-5b6c5d-3b2c35-2a1f2d
+https://coolors.co/56e39f-59c9a5-bd6b73-3b2c35-2a1f2d
+
 */
 
 :root {
-    --dark: #2A1F2D;
-    --light: #3B2C35;
-    --accent: #59C9A5;
-    --accent-light: #56E39F
+  --dark: #2a1f2d;
+  --light: #3b2c35;
+  --accent: #59c9a5;
+  --accent-light: #56e39f;
+  --error: #e83f50;
 }
 
 * {
-    color: var(--accent);
-    font-family: 'Montserrat', sans-serif;
-    font-family: 'Roboto Mono', monospace;
+  color: var(--accent);
+  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto Mono", monospace;
 }
 
 .heading {
-    color: var(--accent);
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: var(--dark);
-    text-align: center;
+  color: var(--accent);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--dark);
+  text-align: center;
 }
 
 html,
 body {
-    height: 100%;
-    width: 100%;
-    background-color: var(--light);
+  height: 100%;
+  width: 100%;
+  background-color: var(--light);
 }
 
 .wrapper {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
 .container {
-    position: relative;
-    margin: 0 auto;
-    width: 400px;
-    padding: 40px;
-    border: 1px solid;
-    border-radius: 14px;
+  position: relative;
+  margin: 0 auto;
+  width: 400px;
+  padding: 40px;
+  border: 1px solid;
+  border-radius: 14px;
 }
 
 form .fields {
-    display: grid;
-    grid-template-columns: auto;
+  display: grid;
+  grid-template-columns: auto;
 }
 
 form .fields label {
-    margin: 10px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
 form .fields input:focus,
 textarea:focus,
 select:focus {
-    outline: none;
+  outline: none;
 }
 
 form .fields input {
-    width: 300px;
-    padding: 10px;
-    font-size: medium;
-    background-color: var(--light);
-    border: 0;
-    border-bottom: 1px solid var(--accent);
+  width: 300px;
+  padding: 10px;
+  font-size: medium;
+  background-color: var(--light);
+  border: 0;
+  border-bottom: 1px solid var(--accent);
+}
+
+form .fields input:invalid {
+  border-color: var(--error);
 }
 
 form .fields select {
-    width: 200px;
-    margin: 10px 0;
-    font-size: medium;
-    background-color: var(--light);
-    border: 0;
-    border-bottom: 1px solid var(--accent);
+  width: 200px;
+  margin: 10px 0;
+  font-size: medium;
+  background-color: var(--light);
+  border: 0;
+  border-bottom: 1px solid var(--accent);
 }
 
 form .fields textarea {
-    width: 400px;
-    margin: 10px 0;
-    background-color: var(--light);
-    border: 0;
-    border-bottom: 1px solid var(--accent);
+  width: 400px;
+  margin: 10px 0;
+  background-color: var(--light);
+  border: 0;
+  border-bottom: 1px solid var(--accent);
 }
 
 input[type="checkbox"] {
-    filter: sepia(100%) brightness(80%) hue-rotate(170deg) saturate(70%) contrast(300%);
+  filter: sepia(100%) brightness(80%) hue-rotate(170deg) saturate(70%)
+    contrast(300%);
 }
 
-input[type=submit] {
-    background-color: var(--accent);
-    border: none;
-    border-radius: 5px;
-    color: var(--dark);
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
+input[type="submit"] {
+  background-color: var(--accent);
+  border: none;
+  border-radius: 5px;
+  color: var(--dark);
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
 }
+
+input[type=submit]:hover { 
+    background-color: var(--accent-light); 
+} 
+  
 
 .agreement {
-    padding: 20px 0;
+  padding: 20px 0;
 }
 
 
 
-#notify {
-    margin-top: 5px;
-    padding: 10px;
-    font-size: 12px;
-    width: 100%;
-    color: #fff;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
 
-#notify.error {
-    background-color: #DD2C00;
-}
 
-input.invalid {
-    border-color: #DD2C00;
+
+
+/* NEW BLOCK INTEGRATION */
+
+
+
+
+  
+/* The message box */
+#password-message { 
+    display: none; 
+    background: #ffffff; 
+    color: #000; 
+    position: relative; 
+    padding: 20px; 
+    margin-top: 10px; 
+    text-align: left; 
+} 
+  
+#password-message h3 { 
+    font-size: 15px; 
+    margin-top: 0; 
+    text-transform: uppercase; 
+} 
+  
+#password-message p { 
+    margin: 8px 0; 
+} 
+  
+.valid { 
+    color: green; 
+} 
+  
+.valid:before { 
+    position: relative; 
+    left: -35px; 
+    content: "✔"; 
+} 
+  
+.invalid { 
+    color: red; 
+} 
+  
+.invalid:before { 
+    position: relative; 
+    left: -35px; 
+    content: "✖"; 
+} 
+  
+/* Error message style */
+.error-msg { 
+    color: red; 
+    font-size: 14px; 
+    margin-top: 4px; 
 }

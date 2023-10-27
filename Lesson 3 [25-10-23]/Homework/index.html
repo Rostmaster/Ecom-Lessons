@@ -5,28 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HW 27-10-23</title>
     <link rel="stylesheet" href="style.css" />
-    <!-- <script src="script.js"></script>  -->
+    <script src="script.js"></script>
   </head>
   <body>
     <div class="wrapper">
       <div class="container">
         <h1 class="heading">Create an account</h1>
-        <form action="" id="form"class="registration">
+
+        <form id="form" onsubmit="return handle_form_submission()">
           <div id="fields" class="fields">
             <label for="name"> USERNAME:</label>
-            <input
-              id="i_name"
-              type="text"
-              placeholder="Enter your name"
-              pattern="[A-Z]{2,15}"
-              title="Username should only contain uppercase letters. e.g. JOHN"
-            />
+            <span
+              ><input
+                id="i_name"
+                name="i_name"
+                type="text"
+                placeholder="Enter your name"
+                title="Username should only contain uppercase letters e.g. GARY"
+                pattern="[A-Z]{2,15}"
+            /></span>
 
             <label for="password"> PASSWORD:</label>
-            <input id="i_pass" type="password" />
-
-            <label for="password_confirmation">Confirm password:</label>
-            <input id="i_pass_conf" type="password" />
+            <input
+              id="i_pass"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              placeholder="Enter your password"
+              type="password"
+              title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 characters"
+            />
+            <div id="password-message">
+              <h3>Password must contain:</h3>
+              <p class="password-message-item invalid">
+                At least
+                <b>one lowercase letter</b>
+              </p>
+              <p class="password-message-item invalid">
+                At least
+                <b>one uppercase letter</b>
+              </p>
+              <p class="password-message-item invalid">
+                At least
+                <b>one number</b>
+              </p>
+              <p class="password-message-item invalid">
+                Minimum
+                <b>8 characters</b>
+              </p>
+            </div>
 
             <label for="age">AGE:</label>
             <select name="age" id="s_age">
@@ -41,13 +66,12 @@
               name="t_about"
               placeholder="Tell about yourself"
               id="t_about"
-              cols="30"
-              rows="10"
+              rows="5"
             ></textarea>
           </div>
 
           <div class="agreement">
-            <input type="checkbox" id="agree" />
+            <input type="checkbox" id="agree" required />
             <label for="agree" id="agree">I agree to the</label>
             <a
               href="https://termify.io/terms-of-service-generator?gad_source=1&gclid=CjwKCAjwv-2pBhB-EiwAtsQZFMG0CMxFeJJom3X8Ioz_2WUnITYYpJnQ6iTMh5pmvcFVgY12wr5t1RoCOu0QAvD_BwE"
