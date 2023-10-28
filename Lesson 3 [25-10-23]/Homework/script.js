@@ -29,7 +29,7 @@ window.onload = function () {
     nameInput.addEventListener("blur", onNameFocusOut, true);
 
     function onNameFocusIn() {
-        nameInput.placeholder = 'Enter yor name';
+        nameInput.placeholder = 'Enter your UPPERCASE name';
     }
     function onNameFocusOut() {
         nameInput.placeholder = '';
