@@ -19,18 +19,22 @@ https://coolors.co/56e39f-59c9a5-bd6b73-3b2c35-2a1f2d
   font-family: "Roboto Mono", monospace;
 }
 
+html,
+body {
+  height: 100%;
+  width: 100%;
+  min-width:500px;
+  width: auto !important; 
+  width:500px;
+  overflow: auto;
+  background-color: var(--light);
+}
+
 .heading {
   color: var(--accent);
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--dark);
   text-align: center;
-}
-
-html,
-body {
-  height: 100%;
-  width: 100%;
-  background-color: var(--light);
 }
 
 .wrapper {
@@ -109,40 +113,59 @@ input[type="submit"] {
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+  transition-duration: 100ms;
+  
 }
 
 input[type=submit]:hover { 
     background-color: var(--accent-light); 
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+} 
+
+input[type=submit]:disabled { 
+    background-color: var(--error); 
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
 } 
   
-
+  
 .agreement {
   padding: 20px 0;
 }
 
+/* Password validation block */
 
-
-
-
-
-
-/* NEW BLOCK INTEGRATION */
-
-
-
-
-  
-/* The message box */
 #password-message { 
-    display: none; 
-    background: #ffffff; 
+    /** Hiding the block if not password not in focus*/
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    transition: height 0ms 800ms, opacity 400ms 0ms;
+    /** Block properties*/
+    display: block;/**none*/
+    background: var(--light); 
     color: #000; 
     position: relative; 
     padding: 20px; 
     margin-top: 10px; 
     text-align: left; 
 } 
-  
+
+#password-message.visible {
+    /** Show the block with animation*/
+    height: auto; 
+    opacity: 1;
+    transition: height 0ms 600ms, opacity 600ms 0ms;
+}
+
+#password-message.hide {
+    /** Show the block with animation*/
+    height: 0; 
+    opacity: 0;
+    transition: height 0ms 600ms, opacity 600ms 0ms;
+}
+
 #password-message h3 { 
     font-size: 15px; 
     margin-top: 0; 
@@ -159,23 +182,16 @@ input[type=submit]:hover {
   
 .valid:before { 
     position: relative; 
-    left: -35px; 
+    left: -15px; 
     content: "✔"; 
 } 
   
 .invalid { 
-    color: red; 
+    color: var(--error); 
 } 
   
 .invalid:before { 
     position: relative; 
-    left: -35px; 
+    left: -15px; 
     content: "✖"; 
 } 
-  
-/* Error message style */
-.error-msg { 
-    color: red; 
-    font-size: 14px; 
-    margin-top: 4px; 
-}

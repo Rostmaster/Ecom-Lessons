@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HW 27-10-23</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script type="text/javascript" src="script.js"></script>
   </head>
   <body>
     <div class="wrapper">
       <div class="container">
         <h1 class="heading">Create an account</h1>
 
-        <form id="form" onsubmit="return handle_form_submission()">
+        <form id="form" 
+        autocomplete="off">
           <div id="fields" class="fields">
             <label for="name"> USERNAME:</label>
             <span
@@ -20,7 +21,6 @@
                 id="i_name"
                 name="i_name"
                 type="text"
-                placeholder="Enter your name"
                 title="Username should only contain uppercase letters e.g. GARY"
                 pattern="[A-Z]{2,15}"
             /></span>
@@ -29,10 +29,11 @@
             <input
               id="i_pass"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              placeholder="Enter your password"
               type="password"
               title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 characters"
             />
+            
+            
             <div id="password-message">
               <h3>Password must contain:</h3>
               <p class="password-message-item invalid">
@@ -64,7 +65,6 @@
             <label for="about">WHO ARE YOU:</label>
             <textarea
               name="t_about"
-              placeholder="Tell about yourself"
               id="t_about"
               rows="5"
             ></textarea>
