@@ -14,7 +14,7 @@ window.onload = function () {
     passwordInput.addEventListener("blur", onPassFocusOut, true);
 
     function onPassFocusIn() {
-        passwordInput.placeholder = 'Enter yor password';
+        passwordInput.placeholder = 'Enter your password';
         passwordMessage.classList.add("visible");
         passwordMessage.classList.remove("hide");
     }
