@@ -1,0 +1,64 @@
+:root {
+    --delay: 700ms;
+    --delay-short: 300ms;    
+    --delay-long: 1000ms;
+}
+
+* {
+    font-family: monospace, serif;
+}
+
+html,
+body{
+    background-color: beige;
+    align-items: center;
+    height: 100%;
+    overflow: auto;
+    padding: 0%;
+    -webkit-transition: font-size var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+    -moz-transition: font-size var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+    -o-transition: font-size var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition: background-color var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+h4 {
+    font-size: 3em;
+    margin: 0;
+    opacity: .5;
+    text-align: center;
+    margin: auto;
+ 
+    -webkit-transition: opacity 300ms var(--delay-long) cubic-bezier(0.47, 0, 0.745, 0.715);
+    -moz-transition: opacity 1000ms var(--delay-long) cubic-bezier(0.47, 0, 0.745, 0.715);
+    -o-transition: opacity 300ms var(--delay-long) cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition: opacity 1000ms var(--delay-long) cubic-bezier(0.47, 0, 0.745, 0.715); 
+ 
+    -webkit-transition: text-shadow  var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+    -moz-transition: text-shadow  var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+    -o-transition: text-shadow  var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition: text-shadow var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+ 
+    -webkit-transition: font-size var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+    -moz-transition: font-size var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+    -o-transition: font-size var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition: font-size var(--delay) cubic-bezier(0.47, 0, 0.745, 0.715);
+    word-spacing: 100vw
+}
+
+h4:hover {
+    opacity: 1;
+    font-size: 6em;
+    background-color: 0;
+    text-shadow: rgb(151, 106, 75) 1px 6px ;
+}
+
+
+.hov:hover {
+background-color: rgb(255, 225, 94);
+}
+
+h4.hov:hover{
+    background-color: transparent;
+}
+h4.hov:hover{
+    background-color: transparent;
+}

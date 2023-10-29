@@ -53,6 +53,7 @@ body {
   border: 1px solid;
   border-radius: 14px;
 }
+text-align: center;
 
 form .fields {
   display: grid;
