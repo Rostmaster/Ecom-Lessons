@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Noticia+Text:ital,wght@0,700;1,700&family=Roboto+Mono:wght@100&display=swap');
+
+:root {
+    --bg-color: #DAD5D2;
+    --ac-color: #A6A6A6;
+    --ac2-color: #B2A765;
+    --drk-color: #212738;
+}
+
+body {
+    font-family: 'Noticia Text', serif;
+    display: block;
+    align-items: center;
+    background-image: url("https://images.unsplash.com/photo-1528458965990-428de4b1cb0d?auto=format&fit=crop&q=80&w=1929&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+}
+
+#wrapper {
+    border: 5px solid;
+    margin: auto;
+    padding: 10px;
+    display: grid;
+    grid-template-areas:
+        "a a a"
+        "b b c"
+        "d e f"
+        "g g g"
+    ;
+    max-width: 800px;
+}
+
+.element {
+    border: 1px solid var(--drk-color);
+    border-radius: 3px;
+    padding: 15px;
+    margin: 15px;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.element .heading {
+    text-align: center;
+}
+
+.header {
+    grid-area: a;
+}
+
+.section_header {
+    grid-area: b;
+}
+
+.contacts {
+    grid-area: c;
+}
+
+.head1 {
+    grid-area: d;
+}
+
+.head2 {
+    grid-area: e;
+}
+
+.head3 {
+    grid-area: f;
+}
+
+.footer {
+    grid-area: g;
+}

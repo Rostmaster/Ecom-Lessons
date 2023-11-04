@@ -20,19 +20,11 @@ body {
 }
 
 .header{
-<<<<<<< HEAD
     margin-top: 20%;
 
 }
 .wrapper {
     margin-top: 20%;
-=======
-    margin-top: 20vh;
-
-}
-.wrapper {
-    margin-top: 20vh;
->>>>>>> 93497d6 (Lesson 4 HW done [CSS Learning])
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
