@@ -1,0 +1,14 @@
+.container{
+    padding: 20px;
+
+}
+
+.dot{
+    text-align: center;
+    font-size: xx-large;
+    text-decoration: underline;
+}
+
+.img{
+    overflow: hidden;
+}
