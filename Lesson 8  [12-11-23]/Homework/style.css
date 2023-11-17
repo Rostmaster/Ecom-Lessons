@@ -1,0 +1,76 @@
+.Ex1_2{
+    font-family: sans-serif;
+}
+.header1>.heading1::first-letter{
+    color: red;
+    font-style: sans-serif;
+    align-self: center;
+}
+
+.content{
+    border: blue solid 2px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.heading1{
+    align-self: center;
+}
+.ingredients1,.header1,.steps1{
+    display: flex;
+    flex-direction: column;
+}
+.description1{
+    margin:10px;
+}
+.bold{
+    font-weight: bolder;
+}
+table{
+    width: 100%;
+}
+td{
+    text-align: center;
+}
+
+table{
+margin:auto;
+max-width: clamp(400px, 5em, 80vw);
+
+}
+
+.wrapper{
+    margin:auto;
+    width:80vw;
+}
+
+.spacer{
+    height: 20vh;
+}
+
+.block{
+    width: 30px;
+    height: 30px;
+    margin: 0;
+}
+.w{
+    background-color: white;
+}
+.r{
+    background-color: red;
+}
+.b{
+    background-color: black;
+}
+.heart{
+    display: grid;
+    align-content: center;
+    width: auto;
+    margin: auto;
+    grid-template-columns: repeat(9,1fr);
+}
+.item{
+    border: 1px grey solid;
+    font-size: x-small;
+}
