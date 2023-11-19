@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 - [ ] Make the logic with interface:
+=======
+- [x] Make the logic with interface:
+>>>>>>> 105b00a (TTT logic done)
    - [x] board object
    - [x] input and position validation
    - [x] Insert the position from 1 to 9 and return the position in pvp mode
    - [x] indicating win
+<<<<<<< HEAD
    - [ ] Insert the position from 1 to 9 and in pvc mode 
+=======
+   - [x] Insert the position from 1 to 9 and in pvc mode 
+>>>>>>> 105b00a (TTT logic done)
 
 - [ ] Make the html + css page:
    - [ ] 4 sections and footer:
