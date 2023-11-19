@@ -1,7 +1,9 @@
 - [ ] Make the logic with interface:
-   - [ ] board object
-   - [ ] Insert the position from 1 to 9 and return the position in pvp mode
-   - [ ] Insert the position from 1 to 9 and return 2 positions in pvc mode 
+   - [x] board object
+   - [x] input and position validation
+   - [x] Insert the position from 1 to 9 and return the position in pvp mode
+   - [x] indicating win
+   - [ ] Insert the position from 1 to 9 and in pvc mode 
 
 - [ ] Make the html + css page:
    - [ ] 4 sections and footer:
