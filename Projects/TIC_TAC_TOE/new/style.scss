@@ -1,0 +1,63 @@
+:root {
+    --cell-size: 100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.block{
+    width: 100vw;
+    height: 100vh;
+}
+
+.playground {
+    display: grid;
+    margin: auto;
+    align-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+
+.cell {
+    height: var(--cell-size);
+    width: var(--cell-size);
+    /* From https://css.glass */
+    background-color: rgb(95, 79, 56);
+    border: 1px solid rgb(78, 64, 46);
+    border-radius: 16px;
+
+
+    &:hover {
+        /* From https://css.glass */
+        background: rgba(35, 17, 17, 0.41);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(9.2px);
+        -webkit-backdrop-filter: blur(9.2px);
+        border: 1px solid rgba(35, 17, 17, 0.79);
+        transition-duration: 500ms;
+    }
+}
+
+.reset{
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.history-block{
+    background-color: coral;
+}
+.win-block{
+    background-color: azure;
+}

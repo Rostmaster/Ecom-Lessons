@@ -1,0 +1,125 @@
+doctype html 
+
+head 
+    link(rel="stylesheet" href="style.css")
+body 
+    .wrapper
+        h1.title The condition homework
+        h3 Task 1: to define variables value
+        p 
+            |The below conditions are having a values. 
+            br 
+            |There will be a variables values in order to get true and false.
+            br
+            |As well there will be 2 columns: 
+            br
+            |1. that will mark smallest significant part for condition to be true(SSPT) 
+            br
+            |2. that will mark smallest significant part for condition to be false(SSPF)
+
+        table 
+            thead 
+                tr 
+                    th Condition 
+                    th True 
+                    th False 
+                    th Smallest Significant Part for True
+                    th Smallest Significant Part for False
+            tbody 
+                tr 
+                    td if(a + b && c + d)
+                    td a:1, b:1, c:1, d:1    
+                    td a:-1, b:1, c:1, d:1 
+                    td all variables must be >= 0
+                    td a + b or c + d me = 0
+                tr 
+                    td if(a >= b || c > d)
+                    td a:1, b:1, c:1, d:1
+                    td a:1, b:-1, c:-1, d:1 
+                    td a >= b
+                    td a < b and c < d
+
+                tr 
+                    td if(a >= b || c < d)
+                    td a:1, b:1, c:1, d:1
+                    td a:-1, b:1, c:1, d:-1  
+                    td a >= b 
+                    td a < b and c > d
+    
+                tr 
+                    td if(a === b || c <== d)
+                    td a:1, b:1, c:1, d:1
+                    td a:-1, b:1, c:1, d:1   
+                    td a === b 
+                    td a != b and c != d     
+                tr 
+                    td if(true && a + b + c + d )
+                    td a:1, b:1, c:1, d:1
+                    td a:1, b:-1, c:1, d:-1      
+                    td sum of a, b, c and d must be > 0
+                    td sum of a, b, c and d must be 0
+                tr 
+                    td if(a != b)
+                    td a:1, b:-1, c:_, d:_ 
+                    td a:1, b:1, c:_, d:_
+                    td a != b 
+                    td a === b             
+                tr 
+                    td if(a != b && a <= c || a <= b || true)
+                    td a:_, b:_, c:_, d:_
+                    td ---------------
+                    td All values
+                    td ---------------
+                tr 
+                    td if(a != b && a <= c || a <= c || false)
+                    td a:1, b:_, c:_, d:1 
+                    td a:1, b:_, c:-1, d:-1
+                    td a <= d 
+                    td a > c and a > d
+                tr 
+                    td if(a % b == 0 && c % d == 0)
+                    td a:1, b:1, c:3, d:2
+                    td a:1, b:0, c:1, d:1
+                    td all the line
+                    td a % b !== 0
+
+        h3 Task 2: to define variables value
+        p To give an answer what will be the result
+        table 
+            thead 
+                tr 
+                    th True 
+                    th False 
+            tbody 
+                tr 
+                    td 4 < 9
+                    td 10 == 10 && 20 == 30
+                tr 
+                    td (2*3+4)*(7+7)
+                    td  !3
+                tr 
+                    td 18+18
+                    td true&&false
+                tr 
+                    td 10 === 10 || 20 == 30
+                    td !10 && 10
+                tr 
+                    td 20 == 30 || 10 == 10
+                    td !10 && !10
+                tr 
+                    td 3
+                    td 5 != 5 && 5 != 5
+                tr 
+                    td 33 > 20 && 2 < 12 && 10 
+                    td 40 <= 30 && 1 >= 4
+                tr 
+                    td true && true
+                tr 
+                    td true || false
+                tr 
+                    td false|| true
+                tr 
+                    td 2 == 2 && 3 == 3
+                tr 
+                    td 13 >= 3 || 47 >= 5
+                

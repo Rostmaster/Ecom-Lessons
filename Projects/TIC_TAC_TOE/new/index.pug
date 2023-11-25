@@ -1,0 +1,31 @@
+doctype html 
+
+head 
+    script(type="module", src="./script.js") 
+    link(rel="stylesheet", href="style.css")
+    title TTT 
+
+body 
+    .wrapper 
+        .playground 
+            -for(let i = 0; i <9; i++) 
+                .cell(class="cell-" + i)
+            .cell.reset 
+                p reset
+        .block.title-block 
+            .title-wrapper
+                .title-letter.capital T
+                .title-letter i 
+                .title-letter c
+                .title-letter.capital T
+                .title-letter a
+                .title-letter c
+                .title-letter.capital T
+                .title-letter.interactive o 
+                .title-letter e
+        .block.history-block 
+        .block.rules-block 
+        //! optional block
+        .block.win-block 
+        .block.game-block 
+    .footer

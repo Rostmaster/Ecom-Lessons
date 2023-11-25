@@ -1,15 +1,28 @@
 const TTT = require('./js/ttt-logic.js');
 
+let board = document.getElementsByClassName('cell')
 const game = new TTT(false);
 
-game.makeMove(1);
+game.start()
+game.render()
+while(!game.gameOver) {
+    game.makeMove(Math.floor(Math.random() * 10));
+    game.checkWin()
+    game.render();
 
-game.makeMove(3);
-game.makeMove(7);
-game.makeMove(4);
-game.makeMove(8);
-game.makeMove(2);
-game.makeMove(7);
-game.makeMove(7);
-game.makeMove(5);
-game.makeMove(6);
+}
+
+
+//on click assignment
+for (var i = 0; i < board.length; i++)
+     board[i].onclick = function() { cellClick(this);};
+
+cellClick = (event) =>{
+    
+}
+
+//render changes
+
+
+//animation
+

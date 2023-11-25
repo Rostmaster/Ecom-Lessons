@@ -1,0 +1,143 @@
+<!DOCTYPE html >
+<head> 
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body> 
+  <div class="wrapper">
+    <h1 class="title">The condition homework</h1>
+    <h3>Task 1: to define variables value</h3>
+    <p>
+       The below conditions are having a values. <br/>There will be a variables values in order to get true and false.<br/>As well there will be 2 columns: <br/>1. that will mark smallest significant part for condition to be true(SSPT) <br/>2. that will mark smallest significant part for condition to be false(SSPF)</p>
+    <table> 
+      <thead> 
+        <tr> 
+          <th>Condition </th>
+          <th>True </th>
+          <th>False </th>
+          <th>Smallest Significant Part for True</th>
+          <th>Smallest Significant Part for False</th>
+        </tr>
+      </thead>
+      <tbody> 
+        <tr> 
+          <td>if(a + b && c + d)</td>
+          <td>a:1, b:1, c:1, d:1    </td>
+          <td>a:-1, b:1, c:1, d:1 </td>
+          <td>all variables must be >= 0</td>
+          <td>a + b or c + d me = 0</td>
+        </tr>
+        <tr> 
+          <td>if(a >= b || c > d)</td>
+          <td>a:1, b:1, c:1, d:1</td>
+          <td>a:1, b:-1, c:-1, d:1 </td>
+          <td>a >= b</td>
+          <td>a < b and c < d</td>
+        </tr>
+        <tr> 
+          <td>if(a >= b || c < d)</td>
+          <td>a:1, b:1, c:1, d:1</td>
+          <td>a:-1, b:1, c:1, d:-1  </td>
+          <td>a >= b </td>
+          <td>a < b and c > d</td>
+        </tr>
+        <tr> 
+          <td>if(a === b || c <== d)</td>
+          <td>a:1, b:1, c:1, d:1</td>
+          <td>a:-1, b:1, c:1, d:1   </td>
+          <td>a === b </td>
+          <td>a != b and c != d     </td>
+        </tr>
+        <tr> 
+          <td>if(true && a + b + c + d )</td>
+          <td>a:1, b:1, c:1, d:1</td>
+          <td>a:1, b:-1, c:1, d:-1      </td>
+          <td>sum of a, b, c and d must be > 0</td>
+          <td>sum of a, b, c and d must be 0</td>
+        </tr>
+        <tr> 
+          <td>if(a != b)</td>
+          <td>a:1, b:-1, c:_, d:_ </td>
+          <td>a:1, b:1, c:_, d:_</td>
+          <td>a != b </td>
+          <td>a === b             </td>
+        </tr>
+        <tr> 
+          <td>if(a != b && a <= c || a <= b || true)</td>
+          <td>a:_, b:_, c:_, d:_</td>
+          <td>---------------</td>
+          <td>All values</td>
+          <td>---------------</td>
+        </tr>
+        <tr> 
+          <td>if(a != b && a <= c || a <= c || false)</td>
+          <td>a:1, b:_, c:_, d:1 </td>
+          <td>a:1, b:_, c:-1, d:-1</td>
+          <td>a <= d </td>
+          <td>a > c and a > d</td>
+        </tr>
+        <tr> 
+          <td>if(a % b == 0 && c % d == 0)</td>
+          <td>a:1, b:1, c:3, d:2</td>
+          <td>a:1, b:0, c:1, d:1</td>
+          <td>all the line</td>
+          <td>a % b !== 0</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Task 2: to define variables value</h3>
+    <p>To give an answer what will be the result</p>
+    <table> 
+      <thead> 
+        <tr> 
+          <th>True </th>
+          <th>False </th>
+        </tr>
+      </thead>
+      <tbody> 
+        <tr> 
+          <td>4 < 9</td>
+          <td>10 == 10 && 20 == 30</td>
+        </tr>
+        <tr> 
+          <td>(2*3+4)*(7+7)</td>
+          <td> !3</td>
+        </tr>
+        <tr> 
+          <td>18+18</td>
+          <td>true&&false</td>
+        </tr>
+        <tr> 
+          <td>10 === 10 || 20 == 30</td>
+          <td>!10 && 10</td>
+        </tr>
+        <tr> 
+          <td>20 == 30 || 10 == 10</td>
+          <td>!10 && !10</td>
+        </tr>
+        <tr> 
+          <td>3</td>
+          <td>5 != 5 && 5 != 5</td>
+        </tr>
+        <tr> 
+          <td>33 > 20 && 2 < 12 && 10 </td>
+          <td>40 <= 30 && 1 >= 4</td>
+        </tr>
+        <tr> 
+          <td>true && true</td>
+        </tr>
+        <tr> 
+          <td>true || false</td>
+        </tr>
+        <tr> 
+          <td>false|| true</td>
+        </tr>
+        <tr> 
+          <td>2 == 2 && 3 == 3</td>
+        </tr>
+        <tr> 
+          <td>13 >= 3 || 47 >= 5</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
