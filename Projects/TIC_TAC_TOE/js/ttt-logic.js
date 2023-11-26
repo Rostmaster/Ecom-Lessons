@@ -12,6 +12,12 @@ class TTT {
             [0, 0, 0],
             [0, 0, 0],
         ]
+        this.errors = {
+            GAME_OVER: "Game is Over no move possible, please restart",
+            CELL_OCCUPIED: "Cell is occupied, please choose another one",
+            ADDRESS_ERROR: "Address error, please choose another one",
+            VALID_MOVE: "Valid move",
+        }
         this.PvC = PvC      //Player vs Computer
         this.player1 = "X"  //Player 1 symbol
         this.player2 = "O"  //Player 2 symbol
@@ -32,7 +38,7 @@ class TTT {
             [3, 5, 7]
         ]
         this.move = 1
-        this.debug = true
+        this.debug = false
         this.winMove = false
     }
 
@@ -67,19 +73,23 @@ class TTT {
     //! For external use
     makeMove(pos) {
         this.debug ? console.log("move", this.move, " start") : ''
-        this.debug ? console.log("player \'", this.activePlayer, "\' go to ", pos) : ''
-        if (!this.isValidMove(pos)) {
+        true ? console.log("player \'", this.activePlayer, "\' go to ", pos) : ''
+        let moveResult = this.isValidMove(pos)
+        if (moveResult !== this.errors.VALID_MOVE) {
             this.debug ? console.log("NO MOVE WAS DONE") : ''
 
-            return false
+            return moveResult
         }
 
         this.setContent(pos, this.activePlayer)
-        this.render()
+        this.render()                                   //! For debugging only
+        
         this.checkWin()
             ? console.log("\nplayer ", this.activePlayer, 'win with line', this.winningLine, '\n')
             : this.debug ? console.log("turn ", this.move, this.freeCells, "\n") : ''
+
         this.debug ? console.log("move", this.move, " end") : ''
+        
         this.changePlayer()
         this.debug ? console.log("__________") : ''
         return true;
@@ -138,7 +148,7 @@ class TTT {
     AIanalysis() {
         let possibilities = []
         let loosePreventMove = 0
-        let possibleMoves = [0, 0, 0, 0, 0, 0, 0, 0, 0,0]
+        let possibleMoves = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         let possibility = 0
         for (let i = 0; i < this.winOptions.length; i++) {
             let opt = this.winOptions[i]
@@ -151,7 +161,6 @@ class TTT {
             else {
                 possibilities.push(-10)
             }
-            console.log(possibilities)
             if (possibility === 2) {
                 this.winMove = true
                 return this.getContent(opt[0]) === 0 ? opt[0] : this.getContent(opt[1]) === 0 ? opt[1] : opt[2]
@@ -232,23 +241,25 @@ class TTT {
 
     isValidMove(pos) {
         //validating the number, position is empty, and win achieved
-        return !this.gameOver
-            && Number.isInteger(pos)
-            && pos > 0 && pos < 10
-            && this.getContent(pos) === 0;
+        if (this.gameOver) return this.errors.GAME_OVER
+        if (pos > 9 || pos < 1) return this.errors.ADDRESS_ERROR
+        if (this.getContent(pos) !== 0) return this.errors.CELL_OCCUPIED
+        if (!Number.isInteger(pos)) return this.errors.ADDRESS_ERROR
+        if (this.move > 9) {
+            this.checkWin()
+            return this.errors.GAME_OVER
+        }
+
+        return this.errors.VALID_MOVE
     }
 
 };
 
-module.exports = TTT;
+//! Debug block:
+// module.exports = TTT;
 
 // let game = new TTT();
-
 // game.start()
-// game.render()
 // while (!game.gameOver) {
-//     game.makeMove(Math.floor(Math.random() * 10));
-//     game.checkWin()
-//     // game.render();
-
+//     console.log(game.makeMove(Math.floor(Math.random() * (9 - 1 + 1) + 1)))
 // }

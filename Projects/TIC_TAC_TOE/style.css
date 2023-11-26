@@ -38,7 +38,7 @@
 }
 .cell:hover {
   /* From https://css.glass */
-  background: rgba(35, 17, 17, 0.41);
+  background: rgba(255, 255, 255, 0.41);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(9.2px);
@@ -60,4 +60,20 @@
 
 .win-block {
   background-color: azure;
+}
+
+#message {
+  align-self: center;
+  font-size: xx-large;
+  margin: 20px;
+}
+
+.X {
+  content: "X";
+  background-color: blue;
+}
+
+.O {
+  content: "O";
+  background-color: red;
 }/*# sourceMappingURL=style.css.map */

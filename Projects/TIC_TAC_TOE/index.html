@@ -1,12 +1,16 @@
 <!DOCTYPE html >
 <head> 
-  <script type="module" src="./script.js"> </script>
+  <script src="./js/ttt-logic.js"> </script>
+  <script src="./js/graphics.js"> </script>
+  <script src="./js/script.js" defer="defer"> </script>
   <link rel="stylesheet" href="style.css"/>
+  <link rel="shortcut icon" href="./src/favicon.svg" type="image/x-icon"/>
   <title>TTT </title>
 </head>
 <body> 
   <div class="wrapper"> 
-    <div class="playground"> 
+    <div id="message">  Message field</div>
+    <div class="playground">    
       <div class="cell cell-0"></div>
       <div class="cell cell-1"></div>
       <div class="cell cell-2"></div>

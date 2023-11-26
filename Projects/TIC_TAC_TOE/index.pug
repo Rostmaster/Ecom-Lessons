@@ -1,13 +1,17 @@
 doctype html 
 
 head 
-    script(type="module", src="./script.js") 
-    link(rel="stylesheet", href="style.css")
+    script(src="./js/ttt-logic.js") 
+    script(src="./js/graphics.js") 
+    script(src="./js/script.js" defer) 
+    link(rel="stylesheet" href="style.css")
+    link(rel="shortcut icon", href="./src/favicon.svg", type="image/x-icon")
     title TTT 
 
 body 
     .wrapper 
-        .playground 
+        #message   Message field
+        .playground     
             -for(let i = 0; i <9; i++) 
                 .cell(class="cell-" + i)
             .cell.reset 
