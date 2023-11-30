@@ -12,9 +12,9 @@ body
     .wrapper 
         #message   Message field
         .playground     
-            -for(let i = 0; i <9; i++) 
-                .cell(class="cell-" + i)
-            .cell.reset 
+            -for(let i = 1; i <=9; i++) 
+                .cell(id="" + i)
+            .reset
                 p reset
         .block.title-block 
             .title-wrapper

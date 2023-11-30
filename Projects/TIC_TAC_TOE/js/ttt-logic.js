@@ -16,13 +16,14 @@ class TTT {
             GAME_OVER: "Game is Over no move possible, please restart",
             CELL_OCCUPIED: "Cell is occupied, please choose another one",
             ADDRESS_ERROR: "Address error, please choose another one",
+            ADDRESS_FORMAT_ERROR: "Address format error, please check the type",
             VALID_MOVE: "Valid move",
         }
         this.PvC = PvC      //Player vs Computer
         this.player1 = "X"  //Player 1 symbol
         this.player2 = "O"  //Player 2 symbol
         this.activePlayer = this.player1    //First turn player 1
-        this.AIplayer = this.player1       //AI turn number
+        this.AIplayer = this.player2       //AI turn number
         this.EnemyPlayer
         this.gameOver = false       //If there is a win
         this.winningLine = 0        //Winning line (0 - default)
@@ -38,15 +39,18 @@ class TTT {
             [3, 5, 7]
         ]
         this.move = 1
-        this.debug = false
+        this.debug = true
         this.winMove = false
     }
 
     changeFirstPlayer() {
-        this.AIplayer = this.AIplayer === this.player1 ? this.player2 : this.player1
+        this.AIplayer = this.AIplayer === this.player1 && !this.gameOver
+            ? this.player2
+            : this.player1
     }
 
     reset() {
+        console.log("reset")
         this.board = [      //Then playing board
             [0, 0, 0],
             [0, 0, 0],
@@ -57,45 +61,52 @@ class TTT {
         this.winningLine = 0        //Winning line (0 - default)
         this.freeCells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         this.move = 1
+        this.start()
     }
 
     start() {
-        console.clear()
         //reset the game
         this.AIplayer === this.player1
             ? this.EnemyPlayer = this.player2
             : this.EnemyPlayer = this.player1
 
-        if (this.activePlayer === this.AIplayer) this.AIMove()
+        if (this.activePlayer === this.AIplayer) {
+            this.AIMove()
+            this.changePlayer()
+        }
 
 
     }
-    //! For external use
+    //? For external use
     makeMove(pos) {
         this.debug ? console.log("move", this.move, " start") : ''
-        true ? console.log("player \'", this.activePlayer, "\' go to ", pos) : ''
+        console.log("player \'", this.activePlayer, "\' go to ", pos)
         let moveResult = this.isValidMove(pos)
         if (moveResult !== this.errors.VALID_MOVE) {
             this.debug ? console.log("NO MOVE WAS DONE") : ''
-
             return moveResult
         }
 
         this.setContent(pos, this.activePlayer)
-        this.render()                                   //! For debugging only
-        
-        this.checkWin()
-            ? console.log("\nplayer ", this.activePlayer, 'win with line', this.winningLine, '\n')
-            : this.debug ? console.log("turn ", this.move, this.freeCells, "\n") : ''
+        // this.render()                                   //! For debugging only
+
+        // this.checkWin()
+        //     ? console.log("\nplayer ", this.activePlayer, 'win with line', this.winningLine, '\n')
+        //     : this.debug ? console.log("turn ", this.move, this.freeCells, "\n") : ''
 
         this.debug ? console.log("move", this.move, " end") : ''
-        
-        this.changePlayer()
-        this.debug ? console.log("__________") : ''
+
+        // this.changePlayer()
+
         return true;
     }
 
     AIMove() {
+
+        if (this.move > 9 || this.gameOver) {
+            this.gameOver = true
+            return false
+        }
 
         let enemy = this.activePlayer === this.player1 ? this.player2 : this.player1
         let corners = [1, 3, 7, 9]
@@ -103,6 +114,7 @@ class TTT {
 
         if (this.freeCells.length == 1) {
             this.makeMove(this.freeCells[0])
+            return true
         }
 
         if (this.move <= 2) {
@@ -131,14 +143,7 @@ class TTT {
 
             return true
         }
-        if (this.move === 4) {
-            let nextMove = this.AIanalysis()
-            this.winMove
-                ? this.makeMove(nextMove)
-                : this.makeMove(possibleCorners[Math.floor(Math.random() * possibleCorners.length)])
-            return true
-        }
-        if (this.move > 4) {
+        if (this.move >= 4) {
             this.makeMove(this.AIanalysis())
             return true
         }
@@ -146,34 +151,30 @@ class TTT {
     }
 
     AIanalysis() {
-        let possibilities = []
         let loosePreventMove = 0
         let possibleMoves = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         let possibility = 0
         for (let i = 0; i < this.winOptions.length; i++) {
-            let opt = this.winOptions[i]
-            this.getContent(opt[0]) === this.EnemyPlayer ? possibility -= 1 : this.getContent(opt[0]) === this.AIplayer ? possibility += 1 : ''
-            this.getContent(opt[1]) === this.EnemyPlayer ? possibility -= 1 : this.getContent(opt[1]) === this.AIplayer ? possibility += 1 : ''
-            this.getContent(opt[2]) === this.EnemyPlayer ? possibility -= 1 : this.getContent(opt[2]) === this.AIplayer ? possibility += 1 : ''
-            if (this.getContent(opt[0]) === 0 || this.getContent(opt[1]) === 0 || this.getContent(opt[2]) === 0) {
-                possibilities.push(possibility)
-            }
-            else {
-                possibilities.push(-10)
-            }
-            if (possibility === 2) {
-                this.winMove = true
-                return this.getContent(opt[0]) === 0 ? opt[0] : this.getContent(opt[1]) === 0 ? opt[1] : opt[2]
-            } else if (possibility === 1) {
-                this.getContent(opt[0]) === 0 ? possibleMoves[opt[0]] += 1 : ''
-                this.getContent(opt[1]) === 0 ? possibleMoves[opt[1]] += 1 : ''
-                this.getContent(opt[2]) === 0 ? possibleMoves[opt[2]] += 1 : ''
-            }
-            if (possibility === -2) {
-                loosePreventMove = this.getContent(opt[0]) === 0 ? opt[0] : this.getContent(opt[1]) === 0 ? opt[1] : opt[2]
-            }
-            possibility = 0
+            if (this.getContent(opt[0]) === 0 || this.getContent(opt[1]) === 0 || this.getContent(opt[2]) === 0) {//! If there is an empty cell
 
+                let opt = this.winOptions[i]
+                this.getContent(opt[0]) === this.EnemyPlayer ? possibility -= 1 : this.getContent(opt[0]) === this.AIplayer ? possibility += 1 : ''
+                this.getContent(opt[1]) === this.EnemyPlayer ? possibility -= 1 : this.getContent(opt[1]) === this.AIplayer ? possibility += 1 : ''
+                this.getContent(opt[2]) === this.EnemyPlayer ? possibility -= 1 : this.getContent(opt[2]) === this.AIplayer ? possibility += 1 : ''
+
+                if (possibility === 2) {
+                    return this.getContent(opt[0]) === 0 ? opt[0] : this.getContent(opt[1]) === 0 ? opt[1] : opt[2]
+                } else if (possibility === 1) {
+                    this.getContent(opt[0]) === 0 ? possibleMoves[opt[0]] += 1 : ''
+                    this.getContent(opt[1]) === 0 ? possibleMoves[opt[1]] += 1 : ''
+                    this.getContent(opt[2]) === 0 ? possibleMoves[opt[2]] += 1 : ''
+                }
+
+                if (possibility === -2) {
+                    loosePreventMove = this.getContent(opt[0]) === 0 ? opt[0] : this.getContent(opt[1]) === 0 ? opt[1] : opt[2]
+                }
+                possibility = 0
+            }
         }
 
         if (possibleMoves.length !== 0 && loosePreventMove === 0) { // If there are possible moves to put a second symbol in line
@@ -186,8 +187,8 @@ class TTT {
             : loosePreventMove
     }
 
-    //! For external use
-    checkWin() {
+    //? For external use
+    isGameOver() {
         if (this.gameOver) return true
         for (let i = 0; i < this.winOptions.length; i++) {
             if (this.getContent(this.winOptions[i][0]) === this.getContent(this.winOptions[i][1])
@@ -196,27 +197,31 @@ class TTT {
             ) {
                 this.winningLine = i + 1
                 this.gameOver = true
+                console.log("\nplayer ", this.activePlayer, 'win with line', this.winningLine, '\n')
                 return true
             }
         }
         if (this.freeCells.length === 0) {
             this.winningLine = -1
             this.gameOver = true
+            console.log("\nIt is a Tie\n")
         }
         return false
     }
 
     render() {
+        // console.clear()
         console.log(this.board[0][0], this.board[0][1], this.board[0][2])
         console.log(this.board[1][0], this.board[1][1], this.board[1][2])
         console.log(this.board[2][0], this.board[2][1], this.board[2][2], "\n")
+        console.log("__________")
+
     }
 
     changePlayer() {
 
         this.move += 1
         this.activePlayer = this.activePlayer === this.player1 ? this.player2 : this.player1;
-        this.activePlayer === this.AIplayer && this.PvC ? this.AIMove() : ''
     }
     //Helper methods
     getContent(pos) {
@@ -244,9 +249,9 @@ class TTT {
         if (this.gameOver) return this.errors.GAME_OVER
         if (pos > 9 || pos < 1) return this.errors.ADDRESS_ERROR
         if (this.getContent(pos) !== 0) return this.errors.CELL_OCCUPIED
-        if (!Number.isInteger(pos)) return this.errors.ADDRESS_ERROR
+        if (!Number.isInteger(pos)) return this.errors.ADDRESS_FORMAT_ERROR
         if (this.move > 9) {
-            this.checkWin()
+            this.isGameOver()
             return this.errors.GAME_OVER
         }
 

@@ -28,7 +28,7 @@
 }
 
 
-.cell {
+.cell, .reset{
     height: var(--cell-size);
     width: var(--cell-size);
     /* From https://css.glass */

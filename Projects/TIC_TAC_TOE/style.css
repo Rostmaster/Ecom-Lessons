@@ -28,7 +28,7 @@
   grid-template-rows: repeat(3, 1fr);
 }
 
-.cell {
+.cell, .reset {
   height: var(--cell-size);
   width: var(--cell-size);
   /* From https://css.glass */
@@ -36,7 +36,7 @@
   border: 1px solid rgb(78, 64, 46);
   border-radius: 16px;
 }
-.cell:hover {
+.cell:hover, .reset:hover {
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.41);
   border-radius: 16px;

@@ -1,41 +1,88 @@
 
 let board = document.querySelectorAll(".cell")
 const messageElement = document.querySelector("#message")
-const restartElement = document.getElementsByClassName(".reset")
-
+const resetButton = document.querySelector(".reset")
 const game = new TTT();
-restartElement.onClick = game.reset 
 
-game.start()
-//render changes
 
-let raiseError = (error) => {
-    showError(error, messageElement)
-}
 
+//? Graphic control
 let render = () => {
+    game.render()
     renderChanges(game, board, game.activePlayer, messageElement)
 }
 
-// run the game loop placeholder
-let gameRun = () => {
-    while (!game.gameOver) {
-        let moveResult = game.makeMove(Math.floor(Math.random() * (9 - 1 + 1) + 1))
+// render()
+
+//? Game control
+
+let checkWin = () => {
+    return game.isGameOver()
+}
+
+let gameOver = () => {
+    messageElement.textContent = "Game Over"
+}
+
+let start = () => {
+    game.start()
+    render()
+}
+
+let reset = () => {
+    game.reset()
+    render()
+}
+
+let move = (pos = null) => {
+
+    let moveResult
+
+    game.activePlayer === game.AIplayer
+    ? moveResult = game.AIMove()
+    : moveResult = game.makeMove(pos)
+
+    if (moveResult) {
+        render()
+        
+        checkWin()
+        ? gameOver()
+        : game.changePlayer()
+        
     }
+    else {
+        raiseError(moveResult)
+    }
+
+    game.activePlayer === game.AIplayer
+        ? move()
+        : ''
 }
 
 
+//? Button Clicks
 
+let cellClick = (event) => {
 
+    if (event.currentTarget.classList.contains("cell")) {
+        move(parseInt(event.currentTarget.id))
+    }
+    else {
+        reset()
+    }
+}
 
+board.forEach((item) => {
+    item.onclick = function (event) {
+        if (event.currentTarget.classList.contains("cell")) {
+            cellClick(event)
+        }
+    };
+});
 
+resetButton.addEventListener("click", reset)
 
-
-
-
-gameRun()
-
-
+start()
 //animation
 
 

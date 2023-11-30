@@ -1,9 +1,16 @@
 let renderChanges = function(game, board, activePlayer, messageElement) {
-    console.log(board)
     board.forEach(cell => {
-        cell.innerHTML = game.getContent(parseInt(cell.id))
+            cell.style.fontsize = "60px"
+            cell.innerHTML = game.getContent(parseInt(cell.id)) === 0
+            ? "" 
+            : game.getContent(parseInt(cell.id))
     });
-    messageElement.innerHTML = activePlayer + "'s move"
+    game.gameOver
+    ? game.winningLine === -1
+        ? "It is a Tie"
+        : activePlayer + " Won"
+    : messageElement.innerHTML = activePlayer + "'s move"
+    
 
 }
 
