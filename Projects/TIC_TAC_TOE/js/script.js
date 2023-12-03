@@ -2,9 +2,9 @@
 let board = document.querySelectorAll(".cell")
 const messageElement = document.querySelector("#message")
 const resetButton = document.querySelector(".reset")
-const game = new TTT();
-
-
+let changeFirstPlayerButton = document.querySelector(".first-player")
+const game = new TTT()
+let gameStarted = false
 
 //? Graphic control
 let render = () => {
@@ -12,6 +12,13 @@ let render = () => {
     renderChanges(game, board, game.activePlayer, messageElement)
 }
 
+let previewMove = (pos) => {
+
+}
+
+let raiseError = (error) => {
+    showError(error, messageElement)
+}
 // render()
 
 //? Game control
@@ -39,36 +46,39 @@ let move = (pos = null) => {
     let moveResult
 
     game.activePlayer === game.AIplayer
-    ? moveResult = game.AIMove()
-    : moveResult = game.makeMove(pos)
+        ? moveResult = game.AIMove()
+        : moveResult = game.makeMove(pos)
 
-    if (moveResult) {
-        render()
-        
+    if (moveResult === game.errors.VALID_MOVE) {
         checkWin()
-        ? gameOver()
-        : game.changePlayer()
-        
+            ? ''
+            : game.changePlayer()
+
+        render()
     }
     else {
         raiseError(moveResult)
     }
 
-    game.activePlayer === game.AIplayer
+    game.activePlayer === game.AIplayer && !game.gameOver
         ? move()
         : ''
 }
 
+let changeFirstPlayer = (event) => {
 
+    game.startingPlayer === 'AI'
+        ? game.changeFirstPlayer("Player")
+        : game.changeFirstPlayer("AI")
+    changeFirstPlayerButton = game.startingPlayer
+}
 //? Button Clicks
 
 let cellClick = (event) => {
 
     if (event.currentTarget.classList.contains("cell")) {
-        move(parseInt(event.currentTarget.id))
-    }
-    else {
-        reset()
+        move(parseInt(event.currentTarget.id)) //! UNCOMMENT !!!!!!!
+
     }
 }
 
@@ -81,7 +91,7 @@ board.forEach((item) => {
 });
 
 resetButton.addEventListener("click", reset)
-
+changeFirstPlayerButton.addEventListener("click", changeFirstPlayer)
 start()
 //animation
 

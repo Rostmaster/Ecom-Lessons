@@ -22,6 +22,7 @@ class TTT {
         this.PvC = PvC      //Player vs Computer
         this.player1 = "X"  //Player 1 symbol
         this.player2 = "O"  //Player 2 symbol
+        this.startingPlayer = 'AI'
         this.activePlayer = this.player1    //First turn player 1
         this.AIplayer = this.player2       //AI turn number
         this.EnemyPlayer
@@ -43,10 +44,9 @@ class TTT {
         this.winMove = false
     }
 
-    changeFirstPlayer() {
-        this.AIplayer = this.AIplayer === this.player1 && !this.gameOver
-            ? this.player2
-            : this.player1
+    changeFirstPlayer(firstPlayer) {
+        alert(firstPlayer)
+        this.startingPlayer === firstPlayer
     }
 
     reset() {
@@ -66,9 +66,15 @@ class TTT {
 
     start() {
         //reset the game
-        this.AIplayer === this.player1
-            ? this.EnemyPlayer = this.player2
-            : this.EnemyPlayer = this.player1
+        if(this.startingPlayer === 'AI'){
+            this.AIplayer = this.player1
+            this.EnemyPlayer = this.player2
+        }
+        else{
+            this.AIplayer = this.player2
+            this.EnemyPlayer = this.player1
+        }
+        
 
         if (this.activePlayer === this.AIplayer) {
             this.AIMove()
@@ -98,14 +104,14 @@ class TTT {
 
         // this.changePlayer()
 
-        return true;
+        return moveResult;
     }
 
     AIMove() {
 
         if (this.move > 9 || this.gameOver) {
             this.gameOver = true
-            return false
+            return this.errors.GAME_OVER
         }
 
         let enemy = this.activePlayer === this.player1 ? this.player2 : this.player1
@@ -114,40 +120,40 @@ class TTT {
 
         if (this.freeCells.length == 1) {
             this.makeMove(this.freeCells[0])
-            return true
+            return this.errors.VALID_MOVE
         }
 
         if (this.move <= 2) {
             this.makeMove(possibleCorners[Math.floor(Math.random() * possibleCorners.length)])
-            return true
+            return this.errors.VALID_MOVE
         }
         if (this.move === 3) {
             if (this.getContent(2) === enemy) {
                 this.makeMove(8)
-                return true
+                return this.errors.VALID_MOVE
             }
             if (this.getContent(4) === enemy) {
                 this.makeMove(6)
-                return true
+                return this.errors.VALID_MOVE
             }
             if (this.getContent(6) === enemy) {
                 this.makeMove(4)
-                return true
+                return this.errors.VALID_MOVE
             }
             if (this.getContent(8) === enemy) {
                 this.makeMove(2)
-                return true
+                return this.errors.VALID_MOVE
             }
 
             this.makeMove(possibleCorners[Math.floor(Math.random() * possibleCorners.length)])
 
-            return true
+            return this.errors.VALID_MOVEue
         }
         if (this.move >= 4) {
             this.makeMove(this.AIanalysis())
-            return true
+            return this.errors.VALID_MOVE
         }
-        return false
+        return this.errors.ADDRESS_ERROR
     }
 
     AIanalysis() {
@@ -155,9 +161,9 @@ class TTT {
         let possibleMoves = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         let possibility = 0
         for (let i = 0; i < this.winOptions.length; i++) {
+            let opt = this.winOptions[i]
             if (this.getContent(opt[0]) === 0 || this.getContent(opt[1]) === 0 || this.getContent(opt[2]) === 0) {//! If there is an empty cell
 
-                let opt = this.winOptions[i]
                 this.getContent(opt[0]) === this.EnemyPlayer ? possibility -= 1 : this.getContent(opt[0]) === this.AIplayer ? possibility += 1 : ''
                 this.getContent(opt[1]) === this.EnemyPlayer ? possibility -= 1 : this.getContent(opt[1]) === this.AIplayer ? possibility += 1 : ''
                 this.getContent(opt[2]) === this.EnemyPlayer ? possibility -= 1 : this.getContent(opt[2]) === this.AIplayer ? possibility += 1 : ''
@@ -177,13 +183,13 @@ class TTT {
             }
         }
 
-        if (possibleMoves.length !== 0 && loosePreventMove === 0) { // If there are possible moves to put a second symbol in line
-            return this.makeMove(possibleMoves.indexOf(Math.max(...possibleMoves)))
+        if (Math.max(...possibleMoves) > 0 && loosePreventMove === 0) { // If there are possible moves to put a second symbol in line
+            return possibleMoves.indexOf(Math.max(...possibleMoves))
 
         }
 
-        return loosePreventMove === 0 // if there no possible enemy win in the next turn  make a random move
-            ? this.makeMove(this.freeCells[Math.floor(Math.random() * this.freeCells.length)])
+        return loosePreventMove === 0 // if there no possible enemy win in the next turn  make a random free move
+            ? this.freeCells[Math.floor(Math.random() * this.freeCells.length)]
             : loosePreventMove
     }
 

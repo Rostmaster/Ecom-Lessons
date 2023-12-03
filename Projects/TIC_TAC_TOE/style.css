@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
 .wrapper {
   background-color: bisque;
   display: flex;
@@ -18,9 +23,58 @@
 .block {
   width: 100vw;
   height: 100vh;
+  scroll-snap-align: start;
 }
 
-.playground {
+.title-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-wrapper {
+  display: flex;
+  font-size: 10rem;
+  flex-direction: row;
+}
+.title-wrapper .interactive {
+  color: red;
+}
+
+.history-block {
+  display: flex;
+  align-items: center;
+}
+.history-block .history-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: x-large;
+}
+.history-block .history-content .quote {
+  width: 55%;
+}
+.history-block .history-content .board-place {
+  width: 35%;
+}
+
+.rules-block {
+  display: flex;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: x-large;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.game .playground {
   display: grid;
   margin: auto;
   align-content: center;
@@ -28,15 +82,21 @@
   grid-template-rows: repeat(3, 1fr);
 }
 
-.cell, .reset {
+.cell,
+.first-player,
+.reset {
   height: var(--cell-size);
   width: var(--cell-size);
   /* From https://css.glass */
-  background-color: rgb(95, 79, 56);
+  background-color: rgb(206, 183, 151);
   border: 1px solid rgb(78, 64, 46);
   border-radius: 16px;
+  text-align: center;
+  justify-content: center;
 }
-.cell:hover, .reset:hover {
+.cell:hover,
+.first-player:hover,
+.reset:hover {
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.41);
   border-radius: 16px;
@@ -47,15 +107,12 @@
   transition-duration: 500ms;
 }
 
-.reset {
+.reset,
+.first-player {
   background-color: bisque;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.history-block {
-  background-color: coral;
 }
 
 .win-block {

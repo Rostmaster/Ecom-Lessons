@@ -5,17 +5,11 @@ head
     script(src="./js/graphics.js") 
     script(src="./js/script.js" defer) 
     link(rel="stylesheet" href="style.css")
-    link(rel="shortcut icon", href="./src/favicon.svg", type="image/x-icon")
+    link(rel="shortcut icon" href="./src/favicon.svg" type="image/x-icon")
     title TTT 
 
 body 
     .wrapper 
-        #message   Message field
-        .playground     
-            -for(let i = 1; i <=9; i++) 
-                .cell(id="" + i)
-            .reset
-                p reset
         .block.title-block 
             .title-wrapper
                 .title-letter.capital T
@@ -28,8 +22,36 @@ body
                 .title-letter.interactive o 
                 .title-letter e
         .block.history-block 
-        .block.rules-block 
-        //! optional block
-        .block.win-block 
-        .block.game-block 
+            .history-content 
+                .quote 
+                    |Games played on three-in-a-row boards can be traced back to ancient Egypt, where such game boards have been found on roofing tiles dating from around 1300 BC.
+                    |An early variation of tic-tac-toe was played in the Roman Empire, around the first century BC. It was called terni lapilli (three pebbles at a time) 
+                    |and instead of having any number of pieces, each player had only three; thus, they had to move them around to empty spaces to keep playing.
+                    |The first print reference to a game called "tick-tack-toe" occurred in 1884,but referred to "a children's game played on a slate, consisting of trying with the eyes shut to bring the pencil down on one of the numbers of a set, 
+                    |the number hit being scored"."Tic-tac-toe" may also derive from "tick-tack", the name of an old version of backgammon first described in 1558. 
+                    |The US renaming of "noughts and crosses" to "tic-tac-toe" occurred in the 20th century.
+                    |In 1952, OXO (or Noughts and Crosses), developed by British computer scientist Sandy Douglas for the EDSAC computer at the University of Cambridge,
+                    | became one of the first known video games. The computer player could play perfect games of tic-tac-toe against a human opponent.
+                    |In 1975, tic-tac-toe was also used by MIT students to demonstrate the computational power of Tinkertoy elements. 
+                    |The Tinkertoy computer, made out of (almost) only Tinkertoys, is able to play tic-tac-toe perfectly. It is currently on display at the 
+                    |Computer History Museum.
+                .board-place
+                    img(src="./src/ttt.png")
+    .block.rules-block 
+            h1 The rules 
+            h3 you can position the X or O in the empty cells
+            h3 the target is to gain a line of 3 similar figures
+    //! optional block
+    .block.game-block 
+        .game
+            #message   Message field
+            .playground     
+                -for(let i = 1; i <=9; i++) 
+                    .cell(id="" + i)
+                .reset
+                    p reset
+                .first-player 
+                    p Me first 
+                
+
     .footer
