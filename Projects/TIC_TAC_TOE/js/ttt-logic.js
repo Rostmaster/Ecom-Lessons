@@ -43,7 +43,7 @@ class TTT {
         this.debug = true
         this.winMove = false
     }
-
+ 
     changeFirstPlayer(firstPlayer) {
         alert(firstPlayer)
         this.startingPlayer === firstPlayer
@@ -147,7 +147,7 @@ class TTT {
 
             this.makeMove(possibleCorners[Math.floor(Math.random() * possibleCorners.length)])
 
-            return this.errors.VALID_MOVEue
+            return this.errors.VALID_MOVE
         }
         if (this.move >= 4) {
             this.makeMove(this.AIanalysis())

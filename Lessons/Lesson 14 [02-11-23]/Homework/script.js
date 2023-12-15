@@ -3,6 +3,10 @@ let titleInsert = (tag, text) => {
     document.write("<" + tag + ">" + text + "</" + tag + ">")
 }
 
+let insertTag = (tag) => {
+    document.write("<" + tag + ">")
+}
+
 
 // ===========================================================
 titleInsert("h3", "Exersises 1-3 :")
@@ -219,3 +223,200 @@ haveHobby(student, "golf")
 
 addLastName(student,"Doe")
 printStudent(student)
+
+// ===========================================================
+titleInsert("h3", "Exersise 9:")
+
+let insertMatrix = (matrix) => {
+  insertTag("table")
+  for(let row of matrix){
+    insertTag("tr")
+     for(let cell of row)
+       titleInsert('td',cell)
+       insertTag("/tr")
+  }
+    insertTag("/table")
+}
+
+let matrix = [
+  [1,2,3,4],
+  [1,2,3,4],
+  [1,2,3,4],
+]
+
+insertMatrix(matrix)
+
+// ===========================================================
+titleInsert("h3", "Exersise 10:")
+
+let countInMatrix = (value, matrix) =>{
+  let count = 0
+  for(let row of matrix)
+     for(let cell of row)
+        cell===value?count++:''
+  titleInsert('h5', 'There are '+count+' of value '+value+' in :')
+  insertMatrix(matrix)
+}
+
+countInMatrix(2, matrix)
+
+// ===========================================================
+titleInsert("h3", "Exersise 11:")
+
+let insertRepeated = (arr) =>{
+  let counter = []
+  let count = 0
+  
+  for(let i = 0; i < arr.length; i++){
+    for (let pointer = i; pointer < arr.length; pointer++){ 
+       arr[i] === arr[pointer]?count++:''
+     }
+    count > 1 ?counter.push(arr[i]):''
+    count = 0
+  }
+  counter = [... new Set(counter)]
+  for(let el of counter)
+    document.write(el + " ")
+}
+  
+let repeatedArr = [1,1,1,2,3,4,2,5,6,6]
+
+insertRepeated(repeatedArr)
+
+// ===========================================================
+titleInsert("h3", "Exersise 12:")
+
+let insertReversedArr = (arr) =>{
+  let reversed = []
+  for(let i = arr.length-1; i >=0;i--)
+    reversed.push(arr[i])
+  
+  for(let el of reversed)
+    document.write(el+' ')
+  document.write("<br>")
+}
+
+let array = [43,'what', 9 , true, "cannot", false, "be", 3, true]
+insertReversedArr(array)
+
+// ===========================================================
+titleInsert("h3", "Exersise 13:")
+
+let sumArr = (arr1, arr2) => {
+  if(!arr1.length) return
+  if(!arr2.length) return
+  
+  let shortest = arr1.length > arr2.lenght ? arr1.length : arr2.length
+  let largest  = arr1.length > arr2.lenght ? arr2.length : arr1.length
+  console.log(shortest)
+  console.log(largest)
+
+  let result = []
+  for(let i = 0; i < shortest; i++)
+     result[i] = arr1[i] + arr2[i]
+  for(let i = shortest; i < largest; i++){
+    result[i] = arr1.length === largest ? arr1[i] : arr2[i]
+  }
+  return result
+}
+
+let arr1 = [1,2,3,4,6]
+let arr2 = [2,1,0,-1,5]
+
+
+document.write(sumArr(arr1,arr2))
+
+
+// ===========================================================
+
+titleInsert("h3", "Exersise 14:")
+
+let isPalindrome =  (str) => {
+  for(let i = 0; i < str.length/2; i++)
+    if(str[i] !== str[str.length-1-i]) return false
+  return true
+}
+
+let str3 = "racecar"
+let str4 = "Java"
+let str5 = "okooko"
+
+titleInsert("h5",str3 +" is palindrome?: "+ isPalindrome(str3))
+
+titleInsert("h5",str4 +" is palindrome?: "+ isPalindrome(str4))
+
+titleInsert("h5",str5 +" is palindrome?: "+ isPalindrome(str5))
+
+// ===========================================================
+
+titleInsert("h3", "Exersise 15:")
+
+let counter = 1
+while (counter < 100) {
+  document.write(counter+" ")
+  counter*=2
+  
+}
+
+
+// ===========================================================
+titleInsert("h3", "Exersise 16:")
+
+counter = 900000; while (counter > 50) { 
+  document.write(counter+'<br>')
+  counter /= 2
+}
+
+
+
+// ===========================================================
+
+titleInsert("h3", "Exersise 17:")
+
+let names = ['Chris', 'Kevin', 'Naveed', 'Pete', 'Victor']
+let copiedNames = []
+let index = 0
+while (index < names.length) { 
+  copiedNames[index] = names[index]
+  index++
+} 
+
+document.write(copiedNames)
+// => ['Chris', 'Kevin', 'Naveed', 'Pete', 'Victor']
+// ===========================================================
+
+titleInsert("h3", "Exersise 18:")
+
+names = ['Chris', 'Kevin', 'Naveed', 'Pete', 'Victor']
+copiedNames = []
+index = 0
+
+while (index < names.length) { 
+
+  if(names[index] === 'Pete') break
+  copiedNames[index] = names[index]
+
+  index++
+
+} 
+
+document.write(copiedNames)
+
+// => ['Chris', 'Kevin', 'Naveed', 'Pete', 'Victor']
+
+// 
+
+// ===========================================================
+
+titleInsert("h3", "Exersise 19:")
+
+let successiveValues = (arr) => {
+  for (let i = 1; i < arr.length; i++)
+    if(arr[i] === arr[i-1]) 
+      return i
+  return -1
+}
+
+let checkarr = [true, false, true, false, false]
+document.write("<b>"+checkarr+"</b>  successive values check is "+ successiveValues(checkarr))
+
