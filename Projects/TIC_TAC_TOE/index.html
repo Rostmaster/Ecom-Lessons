@@ -1,10 +1,13 @@
 <!DOCTYPE html >
 <head> 
+  <!--!js logic-->
   <script src="./js/ttt-logic.js"> </script>
   <script src="./js/graphics.js"> </script>
   <script src="./js/script.js" defer="defer"> </script>
+  <!--!styling and images-->
   <link rel="stylesheet" href="style.css"/>
   <link rel="shortcut icon" href="./src/favicon.svg" type="image/x-icon"/>
+  <!--!fonts-->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,300&amp;family=Noticia+Text:ital,wght@0,700;1,700&amp;family=Roboto+Mono:wght@100&amp;family=Source+Code+Pro:wght@200&amp;family=Space+Mono&amp;display=swap" rel="stylesheet"/>
@@ -15,20 +18,20 @@
     <div class="block title-block"> 
       <div class="title-wrapper">
         <div class="title-letter capital">T</div>
-        <div class="title-letter">i </div>
+        <div class="title-letter">i</div>
         <div class="title-letter">c</div>
         <div class="title-letter capital">T</div>
         <div class="title-letter">a</div>
         <div class="title-letter">c</div>
         <div class="title-letter capital">T</div>
-        <div class="title-letter interactive">o </div>
+        <div class="title-letter interactive">o</div>
         <div class="title-letter">e</div>
       </div>
     </div>
     <div class="block history-block"> 
-      <div class="history-content"> 
+      <div class="history-content">
         <div class="quote"> 
-          <h1>A bit of history: </h1>
+          <h1>A bit of history:</h1>
           <p>The history of the tic-tac-toe game dates back to ancient Egypt, where three-in-a-row board games were played around 1300 BC. In the Roman Empire, around the first century BC, a variation called terni lapilli emerged, limiting each player to three pieces.</p><br/>
           <p>The term "tick-tack-toe" was first printed in 1884, describing a children's game played on a slate. Another possible origin is "tick-tack," an old version of backgammon mentioned in 1558. In the 20th century, the US adopted the name "tic-tac-toe."</p><br/>
           <p>In 1952, OXO (Noughts and Crosses) was developed by British computer scientist Sandy Douglas for the EDSAC computer, marking one of the first video games. The computer player could play perfect tic-tac-toe against humans.</p><br/>
@@ -37,33 +40,82 @@
         <div class="board-place"><img src="./src/ttt.png"/></div>
       </div>
     </div>
-  </div>
-  <div class="block rules-block"> 
-    <div class="rules">
-      <h1>The rules </h1>
-      <h3>you can position the X or O in the empty cells</h3>
-      <h3>the target is to gain a line of 3 similar figures</h3>
+    <div class="block rules-block"> 
+      <div class="rules">
+        <h1>The rules </h1>
+        <h3>‣ There are 2 figures in the game "X" and "O"</h3>
+        <h3>‣ "X" always starting the game</h3>
+        <h3>‣ You can place fugures only on empty cells</h3>
+        <h3>‣ The target is to create line of 3 same figures</h3>
+      </div>
     </div>
-  </div>
-  <!--! optional block-->
-  <div class="block game-block"> 
-    <div class="game">
-      <div id="message">  Message field</div>
-      <div class="playground">    
-        <div class="cell" id="1"></div>
-        <div class="cell" id="2"></div>
-        <div class="cell" id="3"></div>
-        <div class="cell" id="4"></div>
-        <div class="cell" id="5"></div>
-        <div class="cell" id="6"></div>
-        <div class="cell" id="7"></div>
-        <div class="cell" id="8"></div>
-        <div class="cell" id="9"></div>
-        <div class="reset">
-          <p>reset</p>
-        </div>
-        <div class="first-player"> 
-          <p>Me first </p>
+    <div class="block game-block">
+      <div class="game">
+        <div id="message">  Message field</div>
+        <div class="playground">
+          <div class="cell" id="1">
+            <div class="card"> 
+              <div class="front"></div>
+              <div class="back"></div>
+            </div>
+          </div>
+          <div class="cell" id="2">
+            <div class="card"> 
+              <div class="front"></div>
+              <div class="back"></div>
+            </div>
+          </div>
+          <div class="cell" id="3">
+            <div class="card"> 
+              <div class="front"></div>
+              <div class="back"></div>
+            </div>
+          </div>
+          <div class="cell" id="4">
+            <div class="card"> 
+              <div class="front"></div>
+              <div class="back"></div>
+            </div>
+          </div>
+          <div class="cell" id="5">
+            <div class="card"> 
+              <div class="front"></div>
+              <div class="back"></div>
+            </div>
+          </div>
+          <div class="cell" id="6">
+            <div class="card"> 
+              <div class="front"></div>
+              <div class="back"></div>
+            </div>
+          </div>
+          <div class="cell" id="7">
+            <div class="card"> 
+              <div class="front"></div>
+              <div class="back"></div>
+            </div>
+          </div>
+          <div class="cell" id="8">
+            <div class="card"> 
+              <div class="front"></div>
+              <div class="back"></div>
+            </div>
+          </div>
+          <div class="cell" id="9">
+            <div class="card"> 
+              <div class="front"></div>
+              <div class="back"></div>
+            </div>
+          </div>
+          <div class="reset">
+            <p> </p>
+          </div>
+          <div class="PvP">
+            <p>PvP</p>
+          </div>
+          <div class="first-player"> 
+            <p>Me first</p>
+          </div>
         </div>
       </div>
     </div>

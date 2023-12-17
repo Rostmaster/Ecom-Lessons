@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --cell-size: 100px;
 }
@@ -73,6 +74,9 @@ html {
 .history-block .history-content .board-place {
   width: 20%;
 }
+.history-block .history-content .board-place img {
+  opacity: 0.55;
+}
 
 .rules-block {
   display: flex;
@@ -105,9 +109,18 @@ html {
 }
 
 .game {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-content: center;
+}
+.game #message {
+  align-self: center;
+  font-size: xx-large;
+  margin: 20px;
+  font-size: 3rem;
+  color: azure;
+  font-weight: bolder;
 }
 .game .playground {
   display: grid;
@@ -117,58 +130,115 @@ html {
   grid-template-rows: repeat(3, 1fr);
 }
 
-.cell,
-.first-player,
-.reset {
+.cell {
   height: var(--cell-size);
   width: var(--cell-size);
-  /* From https://css.glass */
-  background-color: rgb(206, 183, 151);
-  border: 1px solid rgb(78, 64, 46);
-  border-radius: 16px;
-  text-align: center;
-  justify-content: center;
+  display: inline-block;
+  perspective: 1000px;
 }
-.cell:hover,
-.first-player:hover,
-.reset:hover {
-  /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.41);
+.cell .card {
+  position: relative;
+  cursor: pointer;
+  transition-duration: 0.6s;
+  transition-timing-function: ease-in-out;
+  transform-style: preserve-3d;
+  height: 100%;
+  width: 100%;
+}
+.cell .card .front,
+.cell .card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(105, 42, 42, 0.22);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(9.2px);
-  -webkit-backdrop-filter: blur(9.2px);
-  border: 1px solid rgba(35, 17, 17, 0.79);
-  transition-duration: 500ms;
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+  border: 1px solid rgba(105, 42, 42, 0.3);
+  z-index: 2;
+  backface-visibility: hidden;
+  transform: rotateX(0deg);
+}
+.cell .card .front {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.cell .card .back, .cell.flip-right .card .back {
+  transform: rotateY(180deg);
+}
+.cell:hover .card .front, .cell.flip-right:hover .card .front {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .reset,
-.first-player {
-  background-color: bisque;
+.first-player,
+.PvP {
+  height: calc(var(--cell-size) / 2);
+  width: var(--cell-size);
+  color: white;
+  font-weight: bolder;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.win-block {
-  background-color: azure;
+.reset::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "↺";
+  /* use the hex value here... */
+  font-size: calc(var(--cell-size) / 1.5);
+  color: #FFF;
+  line-height: calc(var(--cell-size) / 3);
+  text-align: center;
 }
 
-#message {
-  align-self: center;
-  font-size: xx-large;
-  margin: 20px;
-  font-size: 3rem;
-  color: azure;
-  font-weight: bolder;
+.X:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "※";
+  /* use the hex value here... */
+  font-size: calc(var(--cell-size) / 1.5);
+  color: #FFF;
+  line-height: var(--cell-size);
+  text-align: center;
 }
 
-.X {
-  content: "X";
-  background-color: blue;
-}
-
-.O {
-  content: "O";
-  background-color: red;
+.O:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "⊙";
+  /* use the hex value here... */
+  font-size: calc(var(--cell-size) / 1.5);
+  color: #FFF;
+  line-height: var(--cell-size);
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */

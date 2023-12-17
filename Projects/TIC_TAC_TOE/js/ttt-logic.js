@@ -13,16 +13,17 @@ class TTT {
             [0, 0, 0],
         ]
         this.errors = {
-            GAME_OVER: "Game is Over no move possible, please restart",
-            CELL_OCCUPIED: "Cell is occupied, please choose another one",
-            ADDRESS_ERROR: "Address error, please choose another one",
-            ADDRESS_FORMAT_ERROR: "Address format error, please check the type",
+            GAME_OVER: "Game is Over!",
+            CELL_OCCUPIED: "Cell occupied!",
+            ADDRESS_ERROR: "Address error!",
+            ADDRESS_FORMAT_ERROR: "Address format error!",
             VALID_MOVE: "Valid move",
         }
-        this.PvC = PvC      //Player vs Computer
+        this.PvC
         this.player1 = "X"  //Player 1 symbol
         this.player2 = "O"  //Player 2 symbol
-        this.startingPlayer = 'AI'
+        this.startingPlayer = 'Me'
+        this.startingPvC = PvC
         this.activePlayer = this.player1    //First turn player 1
         this.AIplayer = this.player2       //AI turn number
         this.EnemyPlayer
@@ -45,10 +46,11 @@ class TTT {
     }
  
     changeFirstPlayer(firstPlayer) {
-        alert(firstPlayer)
-        this.startingPlayer === firstPlayer
+        this.startingPlayer = firstPlayer
     }
-
+    changeStartingPvC(val) {
+        this.startingPvC = val
+    }
     reset() {
         console.log("reset")
         this.board = [      //Then playing board
@@ -65,6 +67,7 @@ class TTT {
     }
 
     start() {
+        this.PvC = this.startingPvC
         //reset the game
         if(this.startingPlayer === 'AI'){
             this.AIplayer = this.player1
@@ -75,7 +78,6 @@ class TTT {
             this.EnemyPlayer = this.player1
         }
         
-
         if (this.activePlayer === this.AIplayer) {
             this.AIMove()
             this.changePlayer()

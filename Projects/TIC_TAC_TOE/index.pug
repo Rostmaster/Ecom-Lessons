@@ -1,16 +1,17 @@
 doctype html 
 
 head 
+    //!js logic
     script(src="./js/ttt-logic.js") 
     script(src="./js/graphics.js") 
     script(src="./js/script.js" defer) 
+    //!styling and images
     link(rel="stylesheet" href="style.css")
     link(rel="shortcut icon" href="./src/favicon.svg" type="image/x-icon")
+    //!fonts
     link(rel="preconnect" href="https://fonts.googleapis.com") 
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,300&family=Noticia+Text:ital,wght@0,700;1,700&family=Roboto+Mono:wght@100&family=Source+Code+Pro:wght@200&family=Space+Mono&display=swap" rel="stylesheet")
-
-
     title TTT 
 
 body 
@@ -18,18 +19,18 @@ body
         .block.title-block 
             .title-wrapper
                 .title-letter.capital T
-                .title-letter i 
+                .title-letter i
                 .title-letter c
                 .title-letter.capital T
                 .title-letter a
                 .title-letter c
                 .title-letter.capital T
-                .title-letter.interactive o 
+                .title-letter.interactive o
                 .title-letter e
         .block.history-block 
-            .history-content 
+            .history-content
                 .quote 
-                    h1 A bit of history: 
+                    h1 A bit of history:
                     p The history of the tic-tac-toe game dates back to ancient Egypt, where three-in-a-row board games were played around 1300 BC. In the Roman Empire, around the first century BC, a variation called terni lapilli emerged, limiting each player to three pieces.
                     br
                     p The term "tick-tack-toe" was first printed in 1884, describing a children's game played on a slate. Another possible origin is "tick-tack," an old version of backgammon mentioned in 1558. In the 20th century, the US adopted the name "tic-tac-toe."
@@ -39,22 +40,27 @@ body
                     p In 1975, MIT students demonstrated computational power using Tinkertoy elements for tic-tac-toe. The resulting Tinkertoy computer, mostly constructed from Tinkertoys, is now showcased at the Computer History Museum.
                 .board-place
                     img(src="./src/ttt.png")
-    .block.rules-block 
-        .rules
-            h1 The rules 
-            h3 you can position the X or O in the empty cells
-            h3 the target is to gain a line of 3 similar figures
-    //! optional block
-    .block.game-block 
-        .game
-            #message   Message field
-            .playground     
-                -for(let i = 1; i <=9; i++) 
-                    .cell(id="" + i)
-                .reset
-                    p reset
-                .first-player 
-                    p Me first 
-                
-
+        .block.rules-block 
+            .rules
+                h1 The rules 
+                h3 ‣ There are 2 figures in the game "X" and "O"
+                h3 ‣ "X" always starting the game
+                h3 ‣ You can place fugures only on empty cells
+                h3 ‣ The target is to create line of 3 same figures
+        .block.game-block
+            .game
+                #message   Message field
+                .playground
+                    -for(let i = 1; i <=9; i++){
+                        .cell(id="" + i)
+                            .card 
+                                .front
+                                .back
+                    -}
+                    .reset
+                        p 
+                    .PvP
+                        p PvP
+                    .first-player 
+                        p Me first
     .footer
