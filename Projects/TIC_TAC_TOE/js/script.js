@@ -1,5 +1,6 @@
 
 let board = document.querySelectorAll(".cell")
+let themeChangeElement = document.querySelector(".theme-changer")
 const messageElement = document.querySelector("#message")
 const resetButton = document.querySelector(".reset")
 let changeFirstPlayerButton = document.querySelector(".first-player")
@@ -24,15 +25,9 @@ let render = () => {
     }
 }
 
-let previewMove = (pos) => {
-
-}
-
 let raiseError = (error) => {
     showError(error, messageElement)
 }
-// render()
-
 //? Game control
 
 let checkWin = () => {
@@ -86,19 +81,17 @@ let changeFirstPlayer = (event) => {
         : game.changeFirstPlayer('AI')
     render()
 }
+
 let changePvP = (event) => {
     game.startingPvC ? game.changeStartingPvC(false) : game.changeStartingPvC(true)
     render()
 }
-//? Button Clicks
 
 let cellClick = (event) => {
     if (event.currentTarget.classList.contains("cell")) {
         move(parseInt(event.currentTarget.id))
     }
 }
-
-
 board.forEach((item) => {
     item.onclick = function (event) {
         if (event.currentTarget.classList.contains("cell")) {
@@ -110,6 +103,7 @@ board.forEach((item) => {
 resetButton.addEventListener("click", reset)
 changeFirstPlayerButton.addEventListener("click", changeFirstPlayer)
 changePvPButton.addEventListener("click", changePvP)
+themeChangeElement.addEventListener("click", toggleTheme)
 start()
 //animation
 
