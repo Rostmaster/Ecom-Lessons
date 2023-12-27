@@ -1,6 +1,7 @@
 @charset "UTF-8";
 :root {
   --cell-size: 200px;
+  --primary-color: rgb(255, 255, 255);
 }
 @media only screen and (max-width: 1280px) {
   :root {
@@ -9,17 +10,17 @@
 }
 @media only screen and (max-width: 962px) {
   :root {
-    --cell-size: 120px;
+    --cell-size: 150px;
   }
 }
 @media only screen and (max-width: 601px) {
   :root {
-    --cell-size: 100px;
+    --cell-size: 130px;
   }
 }
 @media only screen and (max-width: 414px) {
   :root {
-    --cell-size: 100px;
+    --cell-size: 110px;
   }
 }
 
@@ -28,6 +29,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto Mono", monospace;
+  color: var(--primary-color);
 }
 
 html {
@@ -54,7 +56,7 @@ html {
   justify-content: center;
   align-items: center;
   font-weight: bolder;
-  background-image: url("https://images.unsplash.com/photo-1517817619047-36c7fc165462?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: url("https://images.unsplash.com/photo-1559999831-7deaf136d4a9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   font-size: 12rem;
 }
@@ -127,7 +129,7 @@ html {
 .history-block {
   display: flex;
   align-items: center;
-  background-image: url("https://images.unsplash.com/photo-1521811628991-7a3ea581f7d1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJhY2tncm91bmQlMjBwYXBlcnxlbnwwfDB8MHx8fDA%3D");
+  background-image: url("https://images.unsplash.com/photo-1508918326776-457496a41ed5?q=80&w=2139&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   font-size: smaller;
   /* <------ */
@@ -145,10 +147,15 @@ html {
   background-color: rgba(255, 255, 255, 0.164);
   border-radius: 7%;
   padding: 20px;
-  font-size: 1.3rem;
+  font-size: 2rem;
 }
 .history-block .history-content .quote h1 {
   align-self: center;
+}
+@media only screen and (max-width: 2000px) {
+  .history-block .history-content .quote {
+    font-size: 1.6rem;
+  }
 }
 @media only screen and (max-width: 1280px) {
   .history-block .history-content .quote {
@@ -157,7 +164,7 @@ html {
 }
 @media only screen and (max-width: 962px) {
   .history-block .history-content .quote {
-    font-size: 1rem;
+    font-size: 1.26rem;
     width: 45%;
     height: 85vh;
   }
@@ -194,7 +201,7 @@ html {
 .rules-block {
   display: flex;
   align-items: center;
-  background-image: url("https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: url("https://images.unsplash.com/photo-1615127717889-8945dba1f05a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   /* <------ */
   background-repeat: no-repeat;
@@ -209,7 +216,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 2.45rem;
   margin: auto;
 }
 .rules-block .rules > h1 {
@@ -222,10 +229,10 @@ html {
 }
 @media only screen and (max-width: 962px) {
   .rules-block .rules {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
   .rules-block .rules > h1, .rules-block .rules > h3 {
-    margin: 4vh 0;
+    margin: 2vh 0;
   }
 }
 @media only screen and (max-width: 601px) {
@@ -244,7 +251,7 @@ html {
 }
 
 .game-block {
-  background-image: url("https://images.unsplash.com/photo-1437419764061-2473afe69fc2?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: url("https://images.unsplash.com/photo-1518648751968-16f6987377af?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   /* <------ */
   background-repeat: no-repeat;
@@ -256,6 +263,13 @@ html {
   display: flex;
   flex-direction: column;
   align-content: center;
+  margin-top: 15vh;
+  font-size: xx-large;
+}
+@media only screen and (max-width: 1280px) {
+  .game {
+    font-size: x-large;
+  }
 }
 .game #message {
   align-self: center;
