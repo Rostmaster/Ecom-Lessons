@@ -1,7 +1,6 @@
 @charset "UTF-8";
 :root {
   --cell-size: 200px;
-  --theme-icon: "☽"
   --primary-color: rgb(0, 0, 0);
   --secondary-color: rgb(255, 255, 0);
   --title-block-bg: url("https://images.unsplash.com/photo-1517817619047-36c7fc165462?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
@@ -51,29 +50,24 @@ html {
 }
 
 .theme-changer {
+  display: flex;
   position: absolute;
   margin: 20px 20px 0 0;
   align-self: end;
   width: calc(var(--cell-size) / 2);
-  background-color: #FFF;
-  content: "☀";
-  z-index: 10;
-}
-.theme-changer:hover {
-  cursor: pointer;
-}
-.theme-changer::after {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  content: "☀";
-  /* use the hex value here... */
-  font-size: calc(var(--cell-size) / 1.5);
-  color: var(--secondary-color);
-  line-height: calc(var(--cell-size) / 3);
-  text-align: center;
+  height: calc(var(--cell-size) / 2);
+  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+  font-weight: 700;
+  content: "theme";
+  border-radius: 50%;
+  &>span{
+    color: var(--primary-color);
+  }
 }
 
 .block {
