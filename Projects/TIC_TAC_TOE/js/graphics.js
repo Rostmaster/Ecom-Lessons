@@ -23,7 +23,7 @@ let darkMode = [
 
 
 let themeChange = () => {
-    if (themeLight) {
+    if (document.querySelector(".cb").checked) {
         root.style.setProperty('--primary-color', lightMode[0]);
         root.style.setProperty('--secondary-color', lightMode[1]);
         root.style.setProperty('--title-block-bg', lightMode[2]);
