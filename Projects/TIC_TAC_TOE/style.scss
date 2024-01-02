@@ -1,27 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,100&family=Montserrat:ital,wght@0,200;1,300&family=Noticia+Text:ital,wght@0,700;1,700&family=Roboto+Mono:ital,wght@0,100;0,500;1,700&family=Source+Code+Pro:wght@200&family=Space+Mono&display=swap");
+
 :root {
     --cell-size: 200px;
-    --theme-icon: "\263D"
-        --primary-color: rgb(0, 0, 0);
-    --secondary-color: rgb(255, 255, 0);
-    --title-block-bg: url('https://images.unsplash.com/photo-1517817619047-36c7fc165462?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-    --history-block-bg: url('https://images.unsplash.com/photo-1521811628991-7a3ea581f7d1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJhY2tncm91bmQlMjBwYXBlcnxlbnwwfDB8MHx8fDA%3D');
-    --rules-block-bg: url('https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-    --game-block-bg: url('https://images.unsplash.com/photo-1437419764061-2473afe69fc2?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    --theme-icon: "\263D" --primary-color: rgb(0, 0, 0);
+    --secondary-color: rgb(90, 87, 79);
+    --contrast-color: rgb(211, 211, 211);
+    --title-block-bg: url("https://images.unsplash.com/photo-1517817619047-36c7fc165462?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    --history-block-bg: url("https://images.unsplash.com/photo-1521811628991-7a3ea581f7d1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJhY2tncm91bmQlMjBwYXBlcnxlbnwwfDB8MHx8fDA%3D");
+    --rules-block-bg: url("https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    --game-block-bg: url("https://images.unsplash.com/photo-1467579424161-6bbc141569d7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    --anim-time: 700ms;
+    --lighten-secondary-color: lighten(var(--secondary-color),40%);
+    @media only screen and (max-width: 4000px) {
+        --cell-size: 300px;
+    }
+    @media only screen and (max-width: 3000px) {
+        --cell-size: 130px;
+    }
+    @media only screen and (max-width: 2000px) {
+        --cell-size: 110px;
+    }
 
     @media only screen and (max-width: 1280px) {
-        --cell-size: 150px;
+        --cell-size: 100px;
     }
 
     @media only screen and (max-width: 962px) {
-        --cell-size: 150px;
+        --cell-size: 90px;
     }
 
     @media only screen and (max-width: 601px) {
-        --cell-size: 130px;
+        --cell-size: 90px;
     }
 
     @media only screen and (max-width: 414px) {
-        --cell-size: 110px;
+        --cell-size: 90px;
     }
 }
 
@@ -29,8 +42,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Roboto Mono", monospace;
     color: var(--primary-color);
+    transition-duration: 700ms;
+    transition-timing-function: ease-in-out;
 }
 
 html {
@@ -46,22 +61,245 @@ html {
 }
 
 .theme-changer {
-    position: absolute;
-    margin: 20px 20px 0 0;
+    z-index: 30;
+    position: fixed;
+    margin: 0 20px 0 0;
+    top: -80px;
     align-self: end;
-    width: calc(var(--cell-size)/2);
-    height: calc(var(--cell-size)/2);
-    border: 30px solid var(--secondary-color);
-    content:'theme';
-    border-radius: 50%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: red solid 1px;
+    border-radius: 0 0 20px 20px;
+    padding: 30px 14px 20px 5px;
+    &:hover {
+        top: -1px;
+    }
 }
+
+// ==========================THEME CHANGER=========================== (Copied partially from https://uiverse.io/r7chardgh/dry-rabbit-69)
+.switch {
+    font-family: "Roboto Mono", monospace;
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 5em;
+    height: 2.5em;
+    user-select: none;
+}
+.switch .cb {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.toggle {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.1em;
+    transition: 0.4s;
+    text-transform: uppercase;
+    font-weight: 700;
+    overflow: hidden;
+}
+.toggle > .left {
+    position: absolute;
+    display: flex;
+    width: 50%;
+    height: 88%;
+    background-color: #f3f3f3;
+    color: #373737;
+    left: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    transform-origin: right;
+    transform: rotateX(10deg);
+    transform-style: preserve-3d;
+    transition: all var(--anim-time);
+}
+.left::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(206, 206, 206);
+    transform-origin: center left;
+    transform: rotateY(90deg);
+}
+.left::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(112, 112, 112);
+    transform-origin: center bottom;
+    transform: rotateX(90deg);
+}
+.toggle > .right {
+    position: absolute;
+    display: flex;
+    width: 50%;
+    height: 88%;
+    background-color: #f3f3f3;
+    color: rgb(206, 206, 206);
+    right: 1px;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    transform-origin: left;
+    transform: rotateX(10deg) rotateY(-45deg);
+    transform-style: preserve-3d;
+    transition: all var(--anim-time);
+}
+.right::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(206, 206, 206);
+    transform-origin: center right;
+    transform: rotateY(-90deg);
+}
+.right::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(112, 112, 112);
+    transform-origin: center bottom;
+    transform: rotateX(90deg);
+}
+.switch input:checked + .toggle > .left {
+    transform: rotateX(10deg) rotateY(45deg);
+    color: var(--secondary-color);
+}
+.switch input:checked + .toggle > .right {
+    transform: rotateX(10deg) rotateY(0deg);
+    color: var(--secondary-color);
+}
+// =================================================================
+
+//==============================ARROWS============================== (Copied from https://codepen.io/ckschmieder/pen/MGGMQG?editors=0110)
+.scroll-prompt {
+    position: absolute;
+    z-index: 200;
+    bottom: calc(var(--cell-size) * 1.5);
+    left: calc(50% - var(--cell-size) / 4);
+    margin-left: calc(0 - var(--cell-size));
+    width: calc(var(--cell-size) / 2);
+    // height: calc(var(--cell-size) / 10);
+}
+.scroll-prompt-arrow-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -18px;
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+.scroll-prompt-arrow {
+    animation-name: opacity;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+.scroll-prompt-arrow:last-child {
+    animation-direction: reverse;
+    margin-top: -6px;
+}
+.scroll-prompt-arrow > div {
+    width: calc(var(--cell-size) / 2);
+    height: calc(var(--cell-size) / 2);
+    border-right: 8px solid var(--primary-color);
+    border-bottom: 8px solid var(--primary-color);
+    transform: rotate(45deg) translateZ(1px);
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.1;
+    }
+    20% {
+        opacity: 0.2;
+    }
+    30% {
+        opacity: 0.3;
+    }
+    40% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    60% {
+        opacity: 0.6;
+    }
+    70% {
+        opacity: 0.7;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    10% {
+        transform: translateY(3px);
+    }
+    20% {
+        transform: translateY(6px);
+    }
+    30% {
+        transform: translateY(9px);
+    }
+    40% {
+        transform: translateY(12px);
+    }
+    50% {
+        transform: translateY(15px);
+    }
+    60% {
+        transform: translateY(18px);
+    }
+    70% {
+        transform: translateY(21px);
+    }
+    80% {
+        transform: translateY(24px);
+    }
+    90% {
+        transform: translateY(27px);
+    }
+    100% {
+        transform: translateY(30px);
+    }
+}
+
+//==================================================================
 
 .block {
     width: 100vw;
     height: 100vh;
     scroll-snap-align: start;
+    scroll-behavior: smooth;
     overflow: hidden;
 }
+//============================TITLE=================================
 
 .title-block {
     display: flex;
@@ -71,8 +309,19 @@ html {
     background-image: var(--title-block-bg);
     background-size: cover;
     font-size: 12rem;
+    -webkit-transition: background-image var(--anim-time) ease-in-out;
+    transition: background-image var(--anim-time) ease-in-out;
 
-    &>.title-wrapper {
+    & > .title-wrapper {
+        font-size: 22rem;
+        @media only screen and (max-width: 3000px) {
+            font-size: 18rem;
+        }
+
+        @media only screen and (max-width: 2000px) {
+            font-size: 14rem;
+        }
+
         @media only screen and (max-width: 1280px) {
             font-size: 10rem;
         }
@@ -94,7 +343,6 @@ html {
         }
     }
 }
-
 .title-wrapper {
     display: flex;
     font-size: 10rem;
@@ -105,8 +353,6 @@ html {
     .toe {
         display: flex;
         flex-direction: row;
-
-
     }
 
     @media only screen and (max-width: 1280px) {
@@ -133,7 +379,7 @@ html {
         color: red;
     }
 }
-
+//============================HISTORY===============================
 .history-block {
     display: flex;
     align-items: center;
@@ -143,7 +389,6 @@ html {
     /* <------ */
     background-repeat: no-repeat;
     background-position: center center;
-
 
     .history-content {
         display: flex;
@@ -161,10 +406,13 @@ html {
             background-color: rgba(255, 255, 255, 0.164);
             border-radius: 7%;
             padding: 20px;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            @media only screen and (max-width: 3000px) {
+                font-size: 1.7rem;
+            }
 
             @media only screen and (max-width: 2000px) {
-                font-size: 1.6rem;
+                font-size: 1.35rem;
             }
 
             @media only screen and (max-width: 1280px) {
@@ -172,7 +420,7 @@ html {
             }
 
             @media only screen and (max-width: 962px) {
-                font-size: 1.26rem;
+                font-size: 0.85rem;
                 width: 45%;
                 height: 85vh;
             }
@@ -180,14 +428,12 @@ html {
             @media only screen and (max-width: 601px) {
                 font-size: 0.9rem;
                 width: 80vw;
-                margin: 5vw
+                margin: 5vw;
             }
 
             @media only screen and (max-width: 414px) {
                 font-size: 0.7rem;
             }
-
-
         }
 
         .board-place {
@@ -204,11 +450,10 @@ html {
             @media only screen and (max-width: 414px) {
                 display: none;
             }
-
-
         }
     }
 }
+//============================RULES=================================
 
 .rules-block {
     display: flex;
@@ -229,12 +474,19 @@ html {
         flex-direction: column;
         justify-content: center;
 
-        &>h1 {
+        & > h1 {
             align-self: center;
         }
 
-        font-size: 2.45rem;
-        margin:auto;
+        font-size: 4rem;
+        margin: auto;
+
+        @media only screen and (max-width: 3000px) {
+            font-size: 2.9rem;
+        }
+        @media only screen and (max-width: 2000px) {
+            font-size: 2rem;
+        }
 
         @media only screen and (max-width: 1280px) {
             font-size: 1.5rem;
@@ -243,9 +495,9 @@ html {
         @media only screen and (max-width: 962px) {
             font-size: 1.4rem;
 
-            &>h1,
-            &>h3 {
-                margin: 2vh 0
+            & > h1,
+            & > h3 {
+                margin: 2vh 0;
             }
         }
 
@@ -253,54 +505,59 @@ html {
             font-size: medium;
             padding: 1%;
 
-            &>h3 {
-                margin: 6vh 0
+            & > h3 {
+                margin: 3vh 0;
             }
         }
 
         @media only screen and (max-width: 414px) {
             font-size: 1.5rem;
+
+            & > h3 {
+                margin: 5vh 0;
+            }
         }
     }
-
-
 }
+//=============================GAME=================================
 
 .game-block {
     background-image: var(--game-block-bg);
+    -webkit-transition: background-image var(--anim-time) ease-in-out;
+    transition: background-image var(--anim-time) ease-in-out;
     background-size: cover;
     /* <------ */
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-// GAME FIELD
 .game {
-    margin-top: 20px;
-    ;
     display: flex;
     flex-direction: column;
     align-content: center;
-    margin-top: 15vh;
-    font-size: xx-large;
-
+    margin-top: 4vh;
+    font-size: x-large;
+    @media only screen and (max-width: 2000px) {
+        font-size: large;
+    }
     @media only screen and (max-width: 1280px) {
-
-        font-size: x-large;
+        font-size: medium;
     }
 
-    @media only screen and (max-width: 962px) {}
+    @media only screen and (max-width: 962px) {
+    }
 
-    @media only screen and (max-width: 601px) {}
+    @media only screen and (max-width: 601px) {
+    }
 
-    @media only screen and (max-width: 414px) {}
+    @media only screen and (max-width: 414px) {
+    }
 
     #message {
         align-self: center;
         font-size: xx-large;
         margin: 20px;
         font-size: 3rem;
-        color: azure;
         font-weight: bolder;
     }
 
@@ -312,7 +569,6 @@ html {
         grid-template-rows: repeat(3, 1fr);
     }
 }
-
 .cell {
     height: var(--cell-size);
     width: var(--cell-size);
@@ -381,16 +637,11 @@ html {
         }
     }
 }
-
-
-
-
 .reset,
 .first-player,
 .PvP {
-    height: calc(var(--cell-size)/2);
+    height: calc(var(--cell-size) / 2);
     width: var(--cell-size);
-    color: white;
     font-weight: bolder;
     display: flex;
     align-items: center;
@@ -404,7 +655,6 @@ html {
     -webkit-backdrop-filter: blur(5.8px);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
-
 .reset::after {
     position: absolute;
     top: 0;
@@ -413,13 +663,10 @@ html {
     right: 0;
     content: "\21BA";
     /* use the hex value here... */
-    font-size: calc(var(--cell-size)/1.5);
-    color: #FFF;
-    line-height: calc(var(--cell-size)/3);
+    font-size: calc(var(--cell-size) / 1.5);
+    line-height: calc(var(--cell-size) / 3);
     text-align: center;
 }
-
-
 .X:after {
     position: absolute;
     top: 0;
@@ -428,12 +675,11 @@ html {
     right: 0;
     content: "\203B";
     /* use the hex value here... */
-    font-size: calc(var(--cell-size)/1.5);
-    color: #FFF;
+    font-size: calc(var(--cell-size) / 1.5);
+    color: #fff;
     line-height: var(--cell-size);
     text-align: center;
 }
-
 .O:after {
     position: absolute;
     top: 0;
@@ -442,8 +688,9 @@ html {
     right: 0;
     content: "\2299";
     /* use the hex value here... */
-    font-size: calc(var(--cell-size)/1.5);
-    color: #FFF;
+    font-size: calc(var(--cell-size) / 1.5);
+    color: #fff;
     line-height: var(--cell-size);
     text-align: center;
 }
+//==================================================================

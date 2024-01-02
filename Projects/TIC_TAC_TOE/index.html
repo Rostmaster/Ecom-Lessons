@@ -15,7 +15,21 @@
 </head>
 <body> 
   <div class="wrapper"> 
-    <div class="theme-changer"> <span>Theme</span></div>
+    <div class="theme-changer"><span class="light">LIGHT:</span>
+      <label class="switch">
+        <input class="cb" type="checkbox"/><span class="toggle"><span class="left">OFF</span><span class="right">ON</span></span>
+      </label>
+    </div>
+    <div class="scroll-prompt" scroll-prompt="" ng-show="showPrompt" style="opacity: 1;">
+      <div class="scroll-prompt-arrow-container">
+        <div class="scroll-prompt-arrow">
+          <div> </div>
+        </div>
+        <div class="scroll-prompt-arrow">
+          <div></div>
+        </div>
+      </div>
+    </div>
     <div class="block title-block"> 
       <div class="title-wrapper">
         <div class="tic">
@@ -35,7 +49,7 @@
         </div>
       </div>
     </div>
-    <div class="block history-block"> 
+    <div class="block history-block">
       <div class="history-content">
         <div class="quote"> 
           <h1>A bit of history:</h1>

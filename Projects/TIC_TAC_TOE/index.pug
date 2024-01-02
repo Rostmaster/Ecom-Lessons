@@ -16,8 +16,21 @@ head
 
 body 
     .wrapper 
-        .theme-changer 
-            span Theme
+        .theme-changer
+            span(class="light") LIGHT:
+            label(class="switch")
+                input(class="cb" type="checkbox")
+                span(class="toggle")
+                    span(class="left") OFF
+                    span(class="right") ON
+        div(class="scroll-prompt" scroll-prompt="" ng-show="showPrompt" style="opacity: 1;")
+            .scroll-prompt-arrow-container
+                .scroll-prompt-arrow
+                    div 
+                .scroll-prompt-arrow
+                    div
+
+
         .block.title-block 
             .title-wrapper
                 .tic
@@ -32,7 +45,7 @@ body
                     .title-letter.capital T
                     .title-letter.interactive o
                     .title-letter e
-        .block.history-block 
+        .block.history-block
             .history-content
                 .quote 
                     h1 A bit of history:

@@ -1,6 +1,6 @@
 
 let board = document.querySelectorAll(".cell")
-let themeChangeElement = document.querySelector(".theme-changer")
+let themeChangeElement = document.querySelector(".cb")
 const messageElement = document.querySelector("#message")
 const resetButton = document.querySelector(".reset")
 let changeFirstPlayerButton = document.querySelector(".first-player")
