@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,100&family=Montserrat:ital,wght@0,200;1,300&family=Noticia+Text:ital,wght@0,700;1,700&family=Roboto+Mono:ital,wght@0,100;0,500;1,700&family=Source+Code+Pro:wght@200&family=Space+Mono&family=Varela+Round&display=swap");
+body {
+  background-color: #56514d;
+  color: #fff;
+  font-family: "Varela Round", sans-serif;
+  font-size: xx-large;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --colorMain: #5e5752;
+  --brShadow: -6px 6px 15px #494541;
+  --tlShadow: 6px -6px 15px #635d59;
+}
+
+.text {
+  color: var(--colorMain);
+  font-size: 2em;
+  font-weight: bold;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-shadow: var(--brShadow), var(--tlShadow);
+  position: relative;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: start;
+}
+
+/* Hide the default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10em;
+  width: 10em;
+  margin: 10px 30px;
+  background-color: #ccc;
+  border-radius: 126px;
+  background: #56514d;
+  box-shadow: inset -5px 5px 18px #3f3b38, inset 5px -5px 18px #6d6762;
+  transition-duration: 0.5s;
+}
+
+.container .input:active {
+  border-radius: 126px;
+  background: linear-gradient(225deg, #5c5752, #4d4945);
+  box-shadow: -5px 5px 18px #3f3b38, 5px -5px 18px #6d6762;
+}
+
+.container input:checked ~ .checkmark {
+  border-radius: 126px;
+  background: linear-gradient(225deg, #5c5752, #4d4945);
+  box-shadow: -5px 5px 18px #3f3b38, 5px -5px 18px #6d6762;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid transparent;
+  margin: 1em 0;
+  padding: 0;
+  background: linear-gradient(225deg, #5c5752, #4d4945);
+  box-shadow: -5px 5px 18px #3f3b38, 5px -5px 18px #6d6762;
+}/*# sourceMappingURL=style.css.map */
