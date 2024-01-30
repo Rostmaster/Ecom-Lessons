@@ -1,0 +1,75 @@
+<!DOCTYPE html >
+<head> 
+  <script src="./js/script.js" defer="defer"> </script>
+  <link rel="stylesheet" href="./css/style.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./js/ConsoleTask.js"> </script>
+  <link rel="shortcut icon" href="#"/>
+  <title> </title>
+</head>
+<body>
+  <div class="wrapper"> 
+    <section class="top"> 
+      <div class="message"></div>
+    </section>
+    <section class="body">
+      <div class="left"> 
+        <div id="buy-items">
+          <template id="order-item-template">
+            <div class="order-item"> 
+              <div class="oi-info">
+                <div class="oii name"> </div>
+                <div class="oii km"> </div>
+                <div class="oii year"> </div>
+                <div class="oii type"> </div>
+                <div class="oii price"></div>
+              </div>
+              <div class="oi-controls"> 
+                <input class="oic amount" type="number"/>
+                <div class="oic add-cart">To cart</div>
+                <div class="oic add-wish">To wishlist</div>
+              </div>
+            </div>
+          </template>
+        </div>
+        <div id="buy-controls"></div>
+      </div>
+      <div class="right">
+        <div class="cart"> 
+          <div id="cart-items"> 
+            <template id="cart-item-template">
+              <div class="cart-item"> 
+                <div class="ci-info">
+                  <div class="cii name">Lamborghini </div>
+                  <div class="cii price">600000</div>
+                  <div class="cii amount">2 pieces</div>
+                </div>
+                <div class="ci-controls"> 
+                  <div class="ci remove-cart">Remove</div>
+                </div>
+              </div>
+            </template>
+          </div>
+          <div id="cart-controls"> 
+            <div id="cart-total">2055550$</div>
+            <button id="checkout">Checkout</button>
+          </div>
+        </div>
+        <div class="wishlist">
+          <template id="wishlist-item-template">
+            <div class="wish-item"> 
+              <div class="wi-info">
+                <div class="wii name">Lamborghini </div>
+                <div class="wii price">600000</div>
+              </div>
+              <div class="wi-controls"> 
+                <div class="wi remove-cart">Remove</div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+    <section class="bottom"></section>
+  </div>
+</body>

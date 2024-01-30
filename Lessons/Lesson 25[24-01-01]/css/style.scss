@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    width: 80vw;
+}
+
+section.top {
+    width: 100%;
+    height: 8vh;
+    background-color: grey;
+}
+
+section.body {
+    width: 100%;
+    height: 84vh;
+    display: flex;
+    flex-direction: row;
+}
+
+section.bottom {
+    width: 100%;
+    height: 8vh;
+    background-color: grey;
+}
+
+.left {
+    height: 100%;
+    width: 60%;
+    background-color: lightgray;
+}
+
+.right {
+    height: 100%;
+    width: 40%;
+
+    .cart {
+        width: 100%;
+        height: 50%;
+        background-color: coral;
+        display: flex;
+        flex-direction: column;
+        justify-items: space-between;
+
+        #cart-items {
+            height: 100%;
+            background-color: lightcoral;
+        }
+        #cart-controls {
+            display: flex;
+            width: auto;
+            align-items: center;
+            justify-content: space-around;
+            margin:0 10px;
+        }
+    }
+
+    .wishlist {
+        width: 100%;
+        height: 50%;
+    }
+}
+
+.order-item {
+    width: 100%;
+    padding: 10px 5px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .oi-info {
+        display: grid;
+        width: 75%;
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .oi-controls {
+        display: flex;
+        width: 25%;
+        padding: 0 10px;
+        justify-content: space-between;
+
+        .oic.amount{
+            width: 40px;
+        }
+    }
+}
+
+
+.cart-item{
+    width: 100%;
+    padding: 3px 5px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .ci-info{
+        display: grid;
+        width: 80%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.wish-item{
+    width: 100%;
+    padding: 3px 5px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .wi-info{
+        display: grid;
+        width: 80%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
