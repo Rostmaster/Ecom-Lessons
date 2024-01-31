@@ -3,7 +3,7 @@ head
     script(src="./js/script.js" defer) 
     link(rel="stylesheet" href="./css/style.css")
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js")
-    script(src="./js/ConsoleTask.js") 
+    //- script(src="./js/ConsoleTask.js") 
     link(rel="shortcut icon" href="#")
     title 
 body
@@ -12,13 +12,14 @@ body
         .message
       section.body
         .left 
+          .items-title The cars available now :
           #buy-items
             template(id="order-item-template")
               .order-item 
                 .oi-info
                   .oii.name 
                   .oii.km 
-                  .oii.year 
+                  .oii.year
                   .oii.type 
                   .oii.price
                 .oi-controls 
@@ -29,6 +30,7 @@ body
           #buy-controls
         .right
           .cart 
+            .cart-title Your cart :
             #cart-items 
               template(id="cart-item-template")
                 .cart-item 
@@ -39,16 +41,17 @@ body
                   .ci-controls 
                     .ci.remove-cart Remove
             #cart-controls 
-              #cart-total 2055550$
+              #cart-total Total: $0
               button#checkout Checkout
           .wishlist
+            .wishlist-title Your Wishlist :
             template(id="wishlist-item-template")
               .wish-item 
                 .wi-info
                   .wii.name Lamborghini 
                   .wii.price 600000
                 .wi-controls 
-                  .wi.remove-cart Remove
+                  .wi.remove-wish Remove
       section.bottom
          
 

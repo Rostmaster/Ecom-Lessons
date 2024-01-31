@@ -1,0 +1,33 @@
+doctype html 
+head 
+    script(src="./js/script.js" defer) 
+    link(rel="stylesheet" href="./css/style.css")
+    link(rel="shortcut icon" href="#")
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js")
+    title JQuery
+body
+    .wrapper 
+        section.one
+            h1 Task 1
+            p(id="my_h1") Hello from JQuery! 
+            .controls
+                button(id="btn1") Click me for green
+                button(id="btn2") Click me for clear
+        section.two
+            h1 Task 2
+            form(id="form")
+                button(id="fBtn1") Add date to div
+                button(id="fBtn2") P color change
+                button(id="fBtn3") Add Date on hover
+                button(id="fBtn4") Disable the buttons
+                p.colorP Hello JQuery
+                .result
+
+        section.three
+            h1 Task 3
+            .container 
+                input(type="text", placeholder="Write your item")
+                button(id="add") Add item
+            .list 
+                .ul(id="items")

@@ -3,7 +3,6 @@
   <script src="./js/script.js" defer="defer"> </script>
   <link rel="stylesheet" href="./css/style.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="./js/ConsoleTask.js"> </script>
   <link rel="shortcut icon" href="#"/>
   <title> </title>
 </head>
@@ -14,13 +13,14 @@
     </section>
     <section class="body">
       <div class="left"> 
+        <div class="items-title">The cars available now :</div>
         <div id="buy-items">
           <template id="order-item-template">
             <div class="order-item"> 
               <div class="oi-info">
                 <div class="oii name"> </div>
                 <div class="oii km"> </div>
-                <div class="oii year"> </div>
+                <div class="oii year"></div>
                 <div class="oii type"> </div>
                 <div class="oii price"></div>
               </div>
@@ -36,6 +36,7 @@
       </div>
       <div class="right">
         <div class="cart"> 
+          <div class="cart-title">Your cart :</div>
           <div id="cart-items"> 
             <template id="cart-item-template">
               <div class="cart-item"> 
@@ -51,11 +52,12 @@
             </template>
           </div>
           <div id="cart-controls"> 
-            <div id="cart-total">2055550$</div>
+            <div id="cart-total">Total: $0</div>
             <button id="checkout">Checkout</button>
           </div>
         </div>
         <div class="wishlist">
+          <div class="wishlist-title">Your Wishlist :</div>
           <template id="wishlist-item-template">
             <div class="wish-item"> 
               <div class="wi-info">
@@ -63,7 +65,7 @@
                 <div class="wii price">600000</div>
               </div>
               <div class="wi-controls"> 
-                <div class="wi remove-cart">Remove</div>
+                <div class="wi remove-wish">Remove</div>
               </div>
             </div>
           </template>
