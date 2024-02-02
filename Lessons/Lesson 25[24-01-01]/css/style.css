@@ -46,6 +46,11 @@ section.top .logo {
   font-weight: 700;
   font-size: 2em;
 }
+section.top .additional {
+  margin-left: 80px;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+}
 
 section.body {
   width: 80vw;
