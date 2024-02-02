@@ -1,4 +1,3 @@
-
 /*
 ? ______ ______  _______    ______     _______         _          
 ?(_____ (______)(_______)  (_____ \   (_______)       | |         
@@ -7,10 +6,9 @@
 ?| |    | |__/ /| |        | (_____      | / ___ |___ |  _ (|___ |
 ?|_|    |_____/ |_|        |_______)     |_\_____(___/|_| \_|___/ 
 */
+
 let DB = {
     cars: [
-
-        //contain 20 different car objects with id, name, price, km, year and type
         {
             id: 1,
             name: 'Volvo',
@@ -25,7 +23,7 @@ let DB = {
             price: 20000,
             km: 0,
             year: 2020,
-            type: 'Cabriolet'
+            type: 'Bike'
         },
         {
             id: 3,
@@ -66,64 +64,44 @@ let DB = {
             km: 0,
             year: 2020,
             type: 'Sedan'
-        }
+        },
+        {
+            id: 8,
+            name: 'Volkswagen',
+            price: 10000,
+            km: 0,
+            year: 2020,
+            type: 'X-over'
+        },
 
 
-    ]
+    ],
+    carTypes: {
+        'Sedan': '🚗 ',
+        'X-over': '🚙 ',
+        'Sport': '🏎️ ',
+        'Pickup': '🚚 ',
+        'Bike': '🏍️ '
+    }
 }
-
-let buyItems = [{ ...DB.cars[0] }, { ...DB.cars[1] }];
-let cartItems = [];
-let wishListItems = [];
+let buyItems = []
+let cartItems = []
+let wishListItems = []
 
 let cartTotalSum = 0;
-
-let getBuyItems = () => buyItems
-let getCartItems = () => cartItems
-let getWishList = () => wishListItems
-
 let runAlert = (msg, param) => {
     alert(msg + ' received:' + param)
 }
-
+let getCarTypes = () => DB.carTypes
+let getBuyItems = () => buyItems
 let buyItemsUpdate = () => {
     $('#buy-items').empty()
     getBuyItems().forEach(item => addOrderItem(item))
 }
-
-let cartUpdate = () => {
-    cartTotalSum = 0;
-    $('#cart-items').empty()
-    getCartItems().forEach(item => addCartItem(item))
-}
-
-let wishlistUpdate = () => {
-    $('.wishlist').empty()
-    getWishList().forEach(item => addWishItem(item))
-}
-let rowsInit = () => {
-    buyItemsUpdate()
-    cartUpdate()
-    wishlistUpdate()
-}
-
-let tableUpdate = () => {
-    rowsInit()
-}
-
-let click = (e) => {
-
-}
-
-let init = () => {
-    buyItems = DB.cars
-    rowsInit()
-}
-
 let addOrderItem = (car) => {
 
     let template = `
-        <div class="order-item ${car.id}" id="bi-${car.id}"> 
+        <div class="item order-item ${car.id}" id="bi-${car.id}"> 
             <div class="oi-info">
                 <div class="oii name">${car.name}</div>
                 <div class="oii type">${car.type}</div>
@@ -134,8 +112,8 @@ let addOrderItem = (car) => {
             <div class="oi-controls"> 
                 <input class="oic amount" type="number"id="ba-${car.id}"
                 value="1" min="1" max="100" step="1"/>
-                <div class="oic add-cart"id="bc-${car.id}">To cart</div>
-                <div class="oic add-wish"id="bw-${car.id}">To wishlist</div>
+                <div class="oic add-cart"id="bc-${car.id}">🛒</div>
+                <div class="oic add-wish"id="bw-${car.id}">💖</div>
             </div>
         </div>
   `
@@ -154,9 +132,7 @@ let addOrderItem = (car) => {
 
         if (cartItem) cartItem.amount += amount
         else cartItems.push({ ...car, amount })
-
         cartUpdate()
-
     })
 
     $("#bw-" + car.id).on("click", () => {
@@ -167,26 +143,31 @@ let addOrderItem = (car) => {
     })
 }
 
+let getCartItems = () => cartItems
+let cartUpdate = () => {
+    cartTotalSum = 0;
+    $("#cart-total").text(`Total: $${cartTotalSum}`)
+    $('#cart-items').empty()
+    getCartItems().forEach(item => addCartItem(item))
+}
 let removeCartItem = (id) => {
     cartItems = cartItems.filter(item => item.id !== id)
     cartUpdate()
 }
-
 let addCartItem = (car) => {
-
+    let type = getCarTypes()[car.type]
     let template = `
-        <div div class="cart-item ${car.id}" id="ci-${car.id}"> 
+        <div div class="item cart-item ${car.id}" id="ci-${car.id}"> 
             <div class="ci-info">
-                <div class="cii name">${car.name}</div>
+                <div class="cii name">${type}${car.name}</div>
                 <div class="cii price">$${car.price}</div>
                 <div class="cii amount">${car.amount} pieces</div>
             </div>
             <div class="ci-controls"> 
-                <div class="ci remove-cart"id="cr-${car.id}">Remove</div>
+                <div class="ci remove-cart"id="cr-${car.id}">⌫</div>
             </div>
         </div >
         `
-
     let $item = $(template);
     let amount = parseInt(car.amount)
     cartTotalSum += car.price * amount
@@ -200,28 +181,32 @@ let addCartItem = (car) => {
     })
 }
 
+let getWishList = () => wishListItems
+let wishlistUpdate = () => {
+    $('#wishlist-items').empty()
+    getWishList().forEach(item => addWishItem(item))
+}
 let removeWishListItem = (id) => {
     wishListItems = wishListItems.filter(item => item.id !== id)
     wishlistUpdate()
 }
-
 let addWishItem = (car) => {
-
+    let type = getCarTypes()[car.type]
     let template = `
-        <div class="wish-item ${car.id}"id="wi-${car.id}"> 
+        <div class="item wish-item ${car.id}"id="wi-${car.id}"> 
                 <div class="wi-info">
-                <div class="wii name">${car.name}</div>
+                <div class="wii name">${type}${car.name}</div>
                 <div class="wii price">$${car.price}</div>
             </div>
             <div class="wi-controls"> 
-                <div class="wi remove-cart"id="wr-${car.id}">Remove</div>
+                <div class="wi remove-wish"id="wr-${car.id}">⌫</div>
             </div>
         </div>
     `
     let $item = $(template);
     wishListItems.some(item => "wi-" + item.id === car.id)
         ? ''
-        : $(".wishlist").append($item)
+        : $("#wishlist-items").append($item)
 
     $("#wr-" + car.id).on("click", () => {
         removeWishListItem(car.id)
@@ -229,11 +214,45 @@ let addWishItem = (car) => {
 
 }
 
-$("#checkout").on("click", () => {
-    alert(`Your spent total of $${cartTotalSum}`)
-    cartItems = []
+let footerInit = () => {
+    let template = `
+		<div class="footer-content">
+	  		<span> @GGGarage </span>
+	  		<span> Phone: 013 840 123 466 798 </span>
+	  		<span> Email: giggle@garage.com</span>
+	  		<span> Address: Israel Haifa GGG Ltd </span>
+	  	</div>
+	`
+    let $item = $(template);
+    $("#footer").append($item)
+}
+
+let controlsInit = () => {
+    $("#checkout").on("click", () => {
+        alert(`Your spent total of $${cartTotalSum}`)
+        cartItems = []
+        cartUpdate()
+    })
+
+    $("#clear").on("click", () => {
+        wishListItems = []
+        wishlistUpdate()
+    })
+}
+
+let rowsInit = () => {
+    buyItemsUpdate()
     cartUpdate()
-})
+    wishlistUpdate()
+    controlsInit()
+}
+
+let init = () => {
+    buyItems = DB.cars
+    rowsInit()
+    footerInit()
+
+}
 
 
 init()
