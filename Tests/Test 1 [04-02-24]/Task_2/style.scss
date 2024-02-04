@@ -1,0 +1,93 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+table {
+  font-family: sans-serif;
+  th,
+  td {
+    font-size: clamp(10px, 2.2vw, 30px);
+    padding: 0.4em 0.5em;
+    border-radius: .5vw;
+    text-align: left;
+    &:nth-child(2) {
+      text-align: right;
+    }
+  }
+  td {
+    background-color: #eee;
+    border-radius: .5vw;
+  }
+  th {
+    background-color: #009;
+    color: #fff;
+  }
+}
+
+.zigzag {
+  border-collapse: separate;
+  border-spacing: 0.25em 1em;
+  tbody tr:nth-child(odd) {
+    transform: rotate(1.5deg);
+  }
+  thead tr,
+  tbody tr:nth-child(even) {
+    transform: rotate(-1.5deg);
+  }
+}
+
+.r5 {
+  background-color: green;
+}
+.r4 {
+  background-color: lightgreen;
+}
+.r3 {
+  background-color: yellow;
+}
+.r2 {
+  background-color: orange;
+}
+.r1 {
+  background-color: red;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  .delete-btn,
+  .buy-btn {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    border: 1px solid grey;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .delete-btn {
+    background-color: red;
+    color: white;
+  }
+  .buy-btn {
+    background-color: blue;
+    color: white;
+  }
+}
+
+.info{
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  #average,
+  #best
+  
+  {
+    height: 9vh;
+    border: 1px;
+  }
+}
