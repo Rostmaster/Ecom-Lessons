@@ -1,0 +1,31 @@
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+#json{
+    width: 100%;
+    height: auto;
+}
+.wrapper{
+    width: 100%;
+    height: 100%;
+    font-size: 2.7vw;
+    color:red;
+
+    animation: move 10s ease-in-out infinite;
+}
+
+@keyframes move{
+    0%{
+        transform: translateY(10%);
+    }
+    50%{
+        transform: translateY(90%);
+    }
+    100%{
+        transform: translateY(10%);
+    }
+}
