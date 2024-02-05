@@ -1,40 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
     <title>TV Store</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="wrapper">
-        <div class="content">
-            <table class="zigzag">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Icon</th>
-                        <th>Store</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>Price</th>
-                        <th>Link</th>
-                        <th>Rate</th>
-                        <th>Options</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody">
-                </tbody>
-            </table>
-            <hr>
-            <div class="info">
-                <div id="best"></div>
-                <div id="average"></div>
-            </div>
+      <div class="content">
+        <table class="zigzag">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Icon</th>
+              <th>Store</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>Price</th>
+              <th>Link</th>
+              <th>Rate</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+        <hr />
+        <div class="info">
+          <div id="average"></div>
+          <div id="best"></div>
         </div>
+      </div>
+
+      <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+          <h1>Checkout:</h1>
+          <div class="form-info">
+            <label ><b>Store name</b></label>
+            <label id="storeL">The chosen store</label>
+
+            <label ><b>Price:</b></label>
+            <label id="priceL">The chosen store</label>
+
+            <label for="cNumber"><b>Card number:</b></label>
+            <input
+              type="text"
+              placeholder="Enter Card number"
+              name="cNumber"
+              id="cNumber"
+              required
+            />
+
+            <label for="cDate"><b>Exp. Date: </b></label>
+            <input
+              type="date"
+              placeholder="Enter Exp. Date"
+              name="cDate"
+              id="cDate"
+              required
+            />
+
+            <label for="cvv"><b>CVV: </b></label>
+            <input
+              type="password"
+              placeholder="Enter CVV"
+              name="cvv"
+              id="cvv"
+              required
+            />
+          </div>
+          <button type="submit" class="btn" onclick="checkout()"><b>Checkout</b></button>
+          <button type="button" class="btn cancel" onclick="closeForm()"><b>Cancel</b></button>
+        </form>
+      </div>
     </div>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
 </html>
