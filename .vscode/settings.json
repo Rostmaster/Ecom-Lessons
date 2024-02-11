@@ -3,5 +3,8 @@
     "cSpell.words": [
         "checkmark",
         "codepen"
-    ]
+    ],
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "400"
 }

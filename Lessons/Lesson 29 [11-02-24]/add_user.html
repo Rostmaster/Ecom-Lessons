@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>POST</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <title>GET BY ID</title>
+  </head>
+  <body>
+
+
+    <script>
+      function my_submit() {
+        e.preventDefault();
+
+        const new_user = {
+          id: document.getElementById("id").value,
+          name: document.getElementById("name").value,
+          username: document.getElementById("username").value,
+          email: document.getElementById("email").value,
+          address:{city: document.getElementById("city").value},
+          phone: document.getElementById("phone").value,
+          website: document.getElementById("website").value,
+        };
+
+        const details = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(new_user),
+        };
+
+        fetch("http://localhost:3000/users/", details)
+          .then((response) => response.json)
+          .then((data) => alert(`new user created`))
+          .catch((error) => alert(error));
+      }
+
+      // GET
+      // GET ID
+    </script>
+  </body>
+</html>

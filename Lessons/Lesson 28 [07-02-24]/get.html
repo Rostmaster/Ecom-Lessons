@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="init.js"></script>
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <title>GET</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+        vertical-align: middle;
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size: 15px;
+        font-weight: bold;
+        color: black;
+        background-color: white;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>POSTS</h2>
+    <table id="posts_table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>TITLE</th>
+          <th>AUTHOR</th>
+          <th>BODY</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <br />
+    POST ID:
+    <input type="number" name="" id="post_id" onkeyup="getPosts()" />&nbsp;
+    <button id="get_posts_btn" onclick="getPosts()">GET POST BY ID</button>
+  </body>
+  <script>
+    let createRow = (post, table) => {
+      const new_row = document.createElement("tr");
+      const cell_id = document.createElement("td");
+      cell_id.textContent = post.id;
+      new_row.appendChild(cell_id);
+
+      const cell_title = document.createElement("td");
+      cell_title.textContent = post.title;
+      new_row.appendChild(cell_title);
+
+      const cell_author = document.createElement("td");
+      cell_author.textContent = post.author;
+      new_row.appendChild(cell_author);
+
+      const cell_body = document.createElement("td");
+      cell_body.textContent = post.body;
+      new_row.appendChild(cell_body);
+
+      table[0].appendChild(new_row);
+    };
+
+    function getPosts() {
+      const id = undefined;
+      fetch(
+        "http://localhost:3000/posts/" +
+          document.getElementById("post_id").value
+      )
+        .then((response) => {
+          if (response.status == 404) return null;
+          return response.json();
+        })
+        .then((posts) => {
+          const tbody = document
+            .getElementById("posts_table")
+            .getElementsByTagName("tbody");
+          tbody[0].innerHTML = "";
+
+          if (posts === null) {
+            tbody.innerHTML = "";
+            createRow(
+              { id: "THERE", title: "IS NO", author: "SUCH", body: "ID HERE!" },
+              tbody
+            );
+            return;
+          }
+
+          const inputElement = document.getElementById("post_id");
+          inputElement.value === ""
+            ? posts.forEach((post) => createRow(post, tbody))
+            : createRow(posts, tbody);
+        });
+
+      function post() {
+        return {
+          id: faker_1.faker.string.uuid(),
+          title: faker_1.faker.lorem.sentence(),
+          author: faker_1.faker.person.bio(),
+          body: faker_1.faker.lorem.paragraphs(),
+        };
+      }
+    }
+  </script>
+</html>

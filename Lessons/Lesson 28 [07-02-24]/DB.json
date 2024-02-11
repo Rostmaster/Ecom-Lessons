@@ -1,0 +1,46 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "The Joy of Gardening",
+      "author": "Alice Johnson",
+      "body": "Gardening is more than just a hobby; it's a way of life. The satisfaction of watching your plants grow and flourish is unparalleled. This weekend, I embarked on a new project to expand my vegetable garden, and the journey was filled with challenges and triumphs. Here's to more green in our lives!"
+    },
+    {
+      "id": "2",
+      "title": "Exploring the Mountains",
+      "author": "Chris Smith",
+      "body": "Just returned from a week-long trek in the Rockies. The beauty of the untouched wilderness is breathtaking, and the challenges of mountain climbing are exhilarating. There's something about the crisp mountain air that revitalizes the soul. Can't wait for my next adventure!"
+    },
+    {
+      "id": "3",
+      "title": "A Dive into History",
+      "author": "Jordan Lee",
+      "body": "I spent the afternoon at the local museum, exploring an exhibit on ancient civilizations. It's fascinating to see how advanced these societies were and how their innovations still influence us today. History is a window to understanding our present and future."
+    },
+    {
+      "id": "4",
+      "title": "Homemade Bread",
+      "author": "Emily Carter",
+      "body": "There's nothing like the smell of homemade bread to make a house feel like a home. Today, I tried my hand at baking sourdough from scratch, and the results were surprisingly good! It's amazing how a few simple ingredients can transform into something so delightful. Recipe to follow soon!"
+    },
+    {
+      "id": "5",
+      "title": "Tech Innovations",
+      "author": "Alex Kim",
+      "body": "The world of technology is ever-evolving, and staying up-to-date with the latest trends is crucial. This week, I'm diving into the implications of artificial intelligence for everyday life. From smart homes to autonomous vehicles, the future is closer than we think."
+    },
+    {
+      "id": "6e53",
+      "title": "Tech ",
+      "author": "Alex",
+      "body": "Lorem ipsum"
+    },
+    {
+      "id": "6",
+      "title": "Tech ",
+      "author": "fdfd",
+      "body": "Lorem ipsum"
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GET</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <title>GET BY ID</title>
+  </head>
+
+  <body>
+    <h2>Get All</h2>
+    GET BY ID : <input type="number" id="user_id_txt" value="0" />
+    <button id="get_user" onclick="get_user_by_id()">GET BY ID</button
+    ><br /><br />
+    <table id="users_table" style="width: 100%">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>USER-NAME</th>
+          <th>EMAIL</th>
+          <th>CITY</th>
+          <th>PHONE</th>
+          <th>WEB-SITE</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      function get_user_by_id() {
+        console.clear()
+        let user_id = parseInt(document.getElementById("user_id_txt").value);
+
+        if (user_id <= 0 || typeof user_id !== "number") {
+          get_users();
+          return;
+        }
+
+        fetch(`http://localhost:3000/users/${user_id}`)
+          .then((response) => {
+            if (response.status === 404) {
+              return {
+                id: "No",
+                name: "Such",
+                username: "User",
+                email: "Was",
+                address: { city: "Found" },
+                phone: "In",
+                website: "Database",
+              };
+            }
+            return response.json();
+          })
+          .then((user) => {
+            console.log(user);
+            if (user == null) return;
+
+            const tbody = document
+              .getElementById("users_table")
+              .getElementsByTagName("tbody")[0];
+            tbody.innerHTML = "";
+
+            insert_row(user, tbody);
+          });
+      }
+      function get_users() {
+        console.clear()
+        fetch("http://localhost:3000/users/")
+          .then((response) => {
+            if (response.status === 404) {
+              document.write("Not found");
+              return null;
+            }
+            return response.json();
+          })
+          .then((users) => {
+            console.log(users);
+            const tbody = document
+              .getElementById("users_table")
+              .getElementsByTagName("tbody")[0];
+            tbody.innerHTML = "";
+
+            if (users == null) return;
+
+            users.forEach((user) => {
+              insert_row(user, tbody);
+            });
+          });
+      }
+
+      function insert_cell(new_row, data) {
+        const new_cell = document.createElement("td");
+        new_cell.textContent = data;
+        new_row.appendChild(new_cell);
+      }
+
+      function insert_row(data, table) {
+        const new_row = document.createElement("tr");
+        insert_cell(new_row, data.id);
+        insert_cell(new_row, data.name);
+        insert_cell(new_row, data.username);
+        insert_cell(new_row, data.email);
+        insert_cell(new_row, data.address.city);
+        insert_cell(new_row, data.phone);
+        insert_cell(new_row, data.website);
+        table.appendChild(new_row);
+      }
+
+      get_users();
+
+      // GET
+      // GET ID
+    </script>
+  </body>
+</html>
