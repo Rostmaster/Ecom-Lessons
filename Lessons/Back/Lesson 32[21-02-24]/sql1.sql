@@ -1,0 +1,11 @@
+-- create table shopping (id integer primary key, name text, amount integer);
+-- alter table shopping rename to shopping
+-- insert into shop values (1,'avokado', 5)
+-- insert into shop values (2,'milk', 2);
+-- insert into shop values (3,'bread', 3);
+-- insert into shop values (4,'chocolate', 8);
+-- insert into shop values (5,'bamba', 5);
+-- insert into shop values (6, 'orange', 10);
+-- select * from shop
+-- select id, name from shop
+-- select * from shop where name like '%d%'

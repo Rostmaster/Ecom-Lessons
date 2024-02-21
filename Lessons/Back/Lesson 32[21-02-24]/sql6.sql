@@ -1,0 +1,1 @@
+select s.id, s.name, s.amount, s.maavar, p.price from shop s join prices p on s.id=p.id where p.price = (select max(price) from prices)

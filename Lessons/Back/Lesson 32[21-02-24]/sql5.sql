@@ -1,0 +1,1 @@
+select s.id, s.name, s.amount, s.maavar, p.price, s.amount * p.price as 'secret' from shop s join prices p on s.id = p.id

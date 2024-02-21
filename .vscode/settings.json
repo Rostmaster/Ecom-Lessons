@@ -1,10 +1,39 @@
 {
-    "compile-hero.disable-compile-files-on-did-save-code": true,
-    "cSpell.words": [
-        "checkmark",
-        "codepen"
-    ],
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
-    "editor.fontWeight": "400"
+  "compile-hero.disable-compile-files-on-did-save-code": true,
+  "cSpell.words": ["checkmark", "codepen"],
+  "editor.fontWeight": "400",
+  "editor.fontFamily": "Cascadia Code ,Consolas",
+  "workbench.iconTheme": "icons",
+  "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06','ss20','ss10', 'zero', 'onum'",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "comment",
+          "keyword",
+          "storage.modifier",
+          "storage.type.class.js",
+          "storage.type.js"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": ["keyword.control.conditional", "keyword.operator"],
+        "settings": {
+          "fontStyle": ""
+        }
+      }
+    ]
+  },
+  "files.autoSave": "onFocusChange",
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "Lesson32",
+      "database": "${workspaceFolder:Ecom-Lessons}/Lessons/Back/Lesson 32[21-02-24]/Basic.db"
+    }
+  ]
 }

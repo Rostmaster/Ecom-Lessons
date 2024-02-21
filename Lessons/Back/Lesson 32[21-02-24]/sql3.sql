@@ -1,0 +1,9 @@
+-- select count(*) from shop
+-- select max(amount) from shop
+-- select avg (amount) from shop
+-- select min (amount) from shop
+-- insert into shop VALUES (6, 'onions', 2, 6)
+-- insert into shop values (7, 'orio', 1, 8)
+-- select maavar, count(*) from shop group by maavar
+-- select id as "secret", name ,amount ,maavar frshop
+-- select maavar, count(*) from shop group by maavar having count (*)>1

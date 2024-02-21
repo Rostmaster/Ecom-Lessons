@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GET</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="server_methods.js" defer></script>
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <title>GET ALL</title>
+  </head>
+
+  <body>
+    <div class="top">
+      <section>
+        <h2>Add / Update User</h2>
+
+        <div class="formBody">
+          <label for="id">ID</label>
+          <input type="text" id="id" name="id" />
+
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" />
+
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" />
+
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" />
+
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" />
+
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" name="phone" />
+
+          <label for="website">website</label>
+          <input type="text" id="website" name="website" />
+        </div>
+        <div class="controls">
+          <button onclick="add_user()">Add</button>
+          <button onClick="update_user()">Update</button>
+        </div>
+      </section>
+      <div class="GetDelete">
+        <section>
+          <h2>Get user</h2>
+          <label for="get_id">ID</label>
+          <input type="text" id="get_id" name="id" />
+          <button id="get_user" onclick="get_user_by_id()">GET BY ID</button>
+          <button id="get_users" onclick="get_users()">GET ALL</button>
+        </section>
+        <section>
+          <h2>Delete user</h2>
+          <label for="delete_id">ID</label>
+          <input type="text" id="delete_id" name="delete_id" />
+          <button onClick="delete_user()">Delete user</button>
+        </section>
+      </div>
+    </div>
+    <section>
+      <h2>Users</h2>
+      <table id="users_table" style="width: 100%">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>USER-NAME</th>
+            <th>EMAIL</th>
+            <th>CITY</th>
+            <th>PHONE</th>
+            <th>WEB-SITE</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </body>
+</html>
